@@ -2,21 +2,21 @@ import { motion } from "framer-motion";
 
 const modules = [
   {
-    num: "MÓDULO 01",
-    title: "Diagnóstico y Visión estratégica",
-    desc: "Detecta ineficiencias operativas y ejecuta victorias tempranas (Quick Wins) mediante el diseño de instrucciones estratégicas aplicadas al negocio.",
+    num: "PILAR 01",
+    title: "Fundamentos",
+    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     image: "/images/module-1.jpg",
   },
   {
-    num: "MÓDULO 02",
-    title: "Arquitectura de Decisión",
-    desc: "Integra LLMs en el análisis de información estratégica y aprende metodologías de validación para asegurar la precisión de los resultados y minimizar sesgos técnicos.",
+    num: "PILAR 02",
+    title: "Práctica",
+    desc: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
     image: "/images/module-2.jpg",
   },
   {
-    num: "MÓDULO 03",
-    title: "Gobernanza y Escalamiento",
-    desc: "Define gobernanza, política de uso y comité de IA para tu empresa. Sales con el documento listo para llevar a junta directiva.",
+    num: "PILAR 03",
+    title: "Educación Continua",
+    desc: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.",
     image: "/images/module-3.jpg",
   },
 ];
@@ -33,17 +33,16 @@ export default function RutaEstrategica() {
           transition={{ duration: 0.5 }}
           className="text-center mb-12"
         >
-          <p className="font-mono text-xs font-semibold text-[#2B6AFF] tracking-[0.12em] mb-3">
-            RUTA ESTRATÉGICA
+          <p className="font-mono text-xs font-semibold text-[#2B6AFF] tracking-[0.12em] mb-3 uppercase">
+            PILARES DEL PROGRAMA
           </p>
           <h2 className="font-serif text-[28px] md:text-[42px] leading-tight">
-            <span className="text-[#111827]">Conoce la ruta </span>
-            <span className="text-[#2B6AFF] italic">estratégica</span>
-            <span className="text-[#111827]"> del programa</span>
+            <span className="text-[#111827]">Conoce los </span>
+            <span className="text-[#2B6AFF] italic">pilares</span>
+            <span className="text-[#111827]"> de nuestros programas</span>
           </h2>
           <p className="font-sans text-base text-[#6B7280] max-w-[520px] mx-auto mt-4">
-            Un recorrido intensivo diseñado para llevarte de la curiosidad a la
-            ejecución operativa.
+            Una metodología estructurada para garantizar el aprendizaje y la implementación real de IA en tu empresa.
           </p>
         </motion.div>
 
