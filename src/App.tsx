@@ -2,6 +2,7 @@ import Navbar from "./sections/Navbar";
 import Hero from "./sections/Hero";
 import LogoCarousel from "./sections/LogoCarousel";
 import ProximasFechas from "./sections/ProximasFechas";
+import DetallesCursos from "./sections/DetallesCursos";
 import Galeria from "./sections/Galeria";
 import Resultados from "./sections/Resultados";
 import RutaEstrategica from "./sections/RutaEstrategica";
@@ -20,6 +21,7 @@ function App() {
       <Hero />
       <LogoCarousel />
       <ProximasFechas />
+      <DetallesCursos />
       <Galeria />
       <Resultados />
       <RutaEstrategica />
