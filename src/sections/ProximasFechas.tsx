@@ -6,34 +6,25 @@ const courses = [
     title: "Inteligencia Artificial Aplicada",
     description: "Domina las bases de la IA y aplícalas a casos de uso reales en tu empresa.",
     modality: "Presencial / Digital",
+    image: "/images/module-1.jpg",
   },
   {
     id: 2,
     title: "Multiplica tus resultados con IA",
     description: "Aprende estrategias avanzadas para escalar operaciones usando automatización.",
     modality: "Presencial / Digital",
+    image: "/images/module-2.jpg",
   },
   {
     id: 3,
     title: "Curso de Verano",
     description: "Edición intensiva para directivos. Actualízate rápidamente en las tendencias.",
     modality: "Presencial / Digital",
+    image: "/images/module-3.jpg",
   },
 ];
 
 export default function ProximasFechas() {
-  const handleApplyClick = (index: number) => {
-    // Dispatch custom event so the carousel can listen to it
-    const event = new CustomEvent("selectCourse", { detail: index });
-    window.dispatchEvent(event);
-
-    // Scroll to the carousel section
-    const element = document.getElementById("detalles-cursos");
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
   return (
     <section id="fechas" className="bg-[#0A0A0A] py-20 md:py-24">
       <div className="max-w-7xl mx-auto px-6">
@@ -67,27 +58,38 @@ export default function ProximasFechas() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-40px" }}
               transition={{ delay: i * 0.15, duration: 0.5 }}
-              className="bg-[#111] border border-white/10 p-8 flex flex-col justify-between hover:border-[#2B6AFF]/50 transition-colors"
+              className="relative overflow-hidden group flex flex-col justify-between h-full min-h-[400px] p-8 border border-white/10 hover:border-[#2B6AFF]/50 transition-colors"
             >
-              <div>
-                <span className="inline-block px-3 py-1 rounded-full border border-white/20 text-white/70 font-sans text-[10px] font-semibold tracking-wide mb-4">
+              {/* Background Image with Gradient */}
+              <div className="absolute inset-0 z-0">
+                <img 
+                  src={course.image} 
+                  alt={course.title} 
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-b from-[#0A0A0A]/80 via-[#0A0A0A]/90 to-[#0A0A0A] z-10" />
+              </div>
+
+              {/* Content */}
+              <div className="relative z-20 flex-1 flex flex-col">
+                <span className="inline-block self-start px-3 py-1 rounded-full border border-white/20 bg-black/50 backdrop-blur-sm text-white/90 font-sans text-[10px] font-semibold tracking-wide mb-4">
                   {course.modality}
                 </span>
-                <h3 className="font-serif text-[24px] text-white leading-tight mb-3">
+                <h3 className="font-serif text-[24px] text-white leading-tight mb-3 mt-auto">
                   {course.title}
                 </h3>
-                <p className="font-sans text-sm text-white/50 mb-6">
+                <p className="font-sans text-sm text-white/70 mb-6">
                   {course.description}
                 </p>
               </div>
 
-              <div className="mt-auto pt-6 border-t border-white/10">
-                <button
-                  onClick={() => handleApplyClick(i)}
+              <div className="relative z-20 mt-auto pt-6 border-t border-white/10">
+                <a
+                  href="#formulario"
                   className="w-full inline-flex justify-center font-sans text-sm font-semibold text-white bg-[#2B6AFF] hover:bg-[#1A5AF5] hover:-translate-y-px active:translate-y-0 px-6 py-3 transition-all duration-200"
                 >
                   Aplicar al programa
-                </button>
+                </a>
               </div>
             </motion.div>
           ))}

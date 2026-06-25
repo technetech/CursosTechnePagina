@@ -3,23 +3,19 @@ import { motion } from "framer-motion";
 const outcomes = [
   {
     num: "01",
-    title: "Plan de implementación de IA",
-    desc: "Una estrategia de automatización aplicable a tu compañía, lista para discutir con tu equipo directivo.",
+    title: "Materiales Didácticos del curso",
   },
   {
     num: "02",
-    title: "Ruta técnica para tu equipo",
-    desc: "Recomendaciones de aprendizaje de IA adaptadas a las necesidades de la compañía y sus empleados.",
+    title: "Directorio de Herramientas IA",
   },
   {
     num: "03",
-    title: "Curso online de repaso",
-    desc: "Un curso hecho a la medida de los retos de la cohorte para reforzar decisiones, herramientas y próximos pasos.",
+    title: "Acceso a Comunidad Techne y a Portal de Educación Continua",
   },
   {
     num: "04",
-    title: "Herramientas profesionales incluidas",
-    desc: "El programa cubre los planes profesionales de ChatGPT y Claude para todos los asistentes.",
+    title: "Plan Personal de Implementación IA",
   },
 ];
 
@@ -43,7 +39,7 @@ export default function Resultados() {
             className="lg:col-span-4"
           >
             <h2 className="font-serif text-[32px] md:text-[40px] text-white leading-tight">
-              Al final del programa tendrás esto.
+              Al final de cualquiera de nuestros programas obtendras :
             </h2>
             <p className="font-sans text-[15px] text-white/55 max-w-[320px] mt-5 leading-relaxed">
               La experiencia está diseñada para cerrar con artefactos útiles, no
@@ -63,7 +59,7 @@ export default function Resultados() {
           </motion.div>
 
           {/* Right Column */}
-          <div className="lg:col-span-8">
+          <div className="lg:col-span-8 flex flex-col justify-center">
             {outcomes.map((item, i) => (
               <motion.div
                 key={item.num}
@@ -82,12 +78,9 @@ export default function Resultados() {
                 <p className="font-mono text-sm font-semibold text-[#2B6AFF] mb-2">
                   {item.num}
                 </p>
-                <h3 className="font-sans text-lg font-semibold text-white mb-2">
+                <h3 className="font-sans text-lg font-semibold text-white">
                   {item.title}
                 </h3>
-                <p className="font-sans text-sm text-white/55 leading-relaxed max-w-[420px]">
-                  {item.desc}
-                </p>
               </motion.div>
             ))}
           </div>
