@@ -22,9 +22,8 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8">
           {/* Brand */}
           <div>
-            <a href="#" className="flex items-center gap-1.5">
-              <span className="text-[#2B6AFF] text-xs">&#9670;</span>
-              <span className="font-serif text-xl text-white">Techne</span>
+            <a href="#" className="flex items-center">
+              <img src="/images/logo.png" alt="Techne" className="h-6 w-auto" />
             </a>
             <p className="font-sans text-[13px] text-white/40 max-w-[260px] mt-4 leading-relaxed">
               Entrenamos directivos de LATAM para que dejen de ver la IA como

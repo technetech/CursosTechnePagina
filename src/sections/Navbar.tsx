@@ -34,11 +34,8 @@ export default function Navbar() {
       >
         <div className="w-full max-w-7xl mx-auto px-6 flex items-center justify-between">
           {/* Logo */}
-          <a href="#" className="flex items-center gap-1.5">
-            <span className="text-[#2B6AFF] text-xs leading-none">&#9670;</span>
-            <span className="font-serif text-[22px] text-white tracking-tight">
-              Techne
-            </span>
+          <a href="#" className="flex items-center">
+            <img src="/images/logo.png" alt="Techne" className="h-7 w-auto" />
           </a>
 
           {/* Desktop Nav Links */}
