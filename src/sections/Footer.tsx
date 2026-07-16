@@ -2,11 +2,10 @@ import { motion } from "framer-motion";
 import { Mail, Phone, MapPin, Linkedin, Instagram, Twitter } from "lucide-react";
 
 const links = [
-  { label: "Programa", href: "#programa" },
-  { label: "Ruta estratégica", href: "#ruta" },
-  { label: "Próximas fechas", href: "#fechas" },
-  { label: "Testimonios", href: "#testimonios" },
-  { label: "Aliados", href: "#aliados" },
+  { label: "Programas", href: "#programas" },
+  { label: "Contenidos", href: "#contenidos" },
+  { label: "Pilares", href: "#ruta" },
+  { label: "Materiales", href: "#" },
 ];
 
 export default function Footer() {
