@@ -17,8 +17,8 @@ const courses = [
   },
   {
     id: 3,
-    title: "Curso de Verano",
-    description: "Edición intensiva para directivos. Actualízate rápidamente en las tendencias.",
+    title: "Programas Empresariales a medida",
+    description: "Diseñamos rutas de aprendizaje y capacitación exclusivas para los equipos de tu empresa.",
     modality: "Presencial / Digital",
     image: "/images/module-3.jpg",
   },

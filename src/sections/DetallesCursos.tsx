@@ -34,13 +34,13 @@ const coursesDetails = [
   },
   {
     id: 3,
-    title: "Curso de Verano",
-    description: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet.",
+    title: "Programas Empresariales a medida",
+    description: "Creamos programas personalizados enfocados en las necesidades específicas de tu compañía, integrando a tus equipos en el uso estratégico y técnico de la inteligencia artificial para resolver problemas reales del negocio.",
     bullets: [
-      "Inmersión total en herramientas modernas",
-      "Talleres prácticos de resolución de problemas",
-      "Networking con otros directivos",
-      "Plan de acción para el próximo trimestre",
+      "Rutas de aprendizaje diseñadas para tus equipos",
+      "Proyectos aplicados a problemas internos de la empresa",
+      "Capacitación en herramientas de IA seleccionadas a medida",
+      "Seguimiento y evaluación del impacto en el negocio",
     ],
   },
 ];
