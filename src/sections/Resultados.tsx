@@ -27,7 +27,7 @@ const stats = [
 
 export default function Resultados() {
   return (
-    <section id="programa" className="bg-[#0A0A0A] py-20 md:py-24">
+    <section id="contenidos" className="bg-[#0A0A0A] py-20 md:py-24">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
           {/* Left Column */}

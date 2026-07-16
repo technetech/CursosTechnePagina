@@ -3,7 +3,6 @@ import Hero from "./sections/Hero";
 import ProgramasUnificados from "./sections/ProgramasUnificados";
 import Resultados from "./sections/Resultados";
 import RutaEstrategica from "./sections/RutaEstrategica";
-import Testimonios from "./sections/Testimonios";
 import CTABanner from "./sections/CTABanner";
 import Formulario from "./sections/Formulario";
 import Footer from "./sections/Footer";
@@ -16,7 +15,6 @@ function App() {
       <ProgramasUnificados />
       <Resultados />
       <RutaEstrategica />
-      <Testimonios />
       <CTABanner />
       <Formulario />
       <Footer />
