@@ -1,21 +1,19 @@
-import { useState } from "react";
-import { motion } from "framer-motion";
-
-const stats = [
-  { value: "+1,100", label: "Líderes formados en LATAM" },
-  { value: "5", label: "Países con cohortes activas" },
-  { value: "40", label: "Directivos máx. por cohorte" },
-  { value: "70%", label: "Completion rate validado" },
-];
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { useNavigate } from "react-router";
+import { CheckCircle2 } from "lucide-react";
 
 export default function Formulario() {
+  const navigate = useNavigate();
+  const [step, setStep] = useState(0);
   const [form, setForm] = useState({
+    tipoPerfil: "",
     nombre: "",
     apellidos: "",
     correo: "",
-    rol: "",
     telefono: "",
     empresa: "",
+    programaInteres: "",
   });
 
   const handleChange = (
@@ -24,8 +22,23 @@ export default function Formulario() {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const filledCount = Object.values(form).filter((v) => v.trim() !== "").length;
-  const progress = Math.round((filledCount / 6) * 100);
+  const handleNext = () => {
+    setStep((prev) => prev + 1);
+  };
+
+  const handleBack = () => {
+    setStep((prev) => Math.max(0, prev - 1));
+  };
+
+  // Redirect to portal automatically on success step
+  useEffect(() => {
+    if (step === 3) {
+      const timer = setTimeout(() => {
+        navigate("/portal");
+      }, 3500); // Wait 3.5 seconds before redirecting
+      return () => clearTimeout(timer);
+    }
+  }, [step, navigate]);
 
   return (
     <section
@@ -42,7 +55,7 @@ export default function Formulario() {
       />
 
       <div className="relative max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           {/* Left Column */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -54,176 +67,217 @@ export default function Formulario() {
               APLICA AHORA
             </p>
             <h2 className="font-serif text-[28px] md:text-[40px] text-white leading-tight mb-5">
-              Aplica ahora. Un asesor te llama en 24 horas.
+              Transforma tu visión estratégica.
             </h2>
             <p className="font-sans text-[15px] text-white/55 max-w-[400px] mb-8 leading-relaxed">
-              Programa exclusivo para VPs, C-levels y directores de empresas de
-              +300 empleados. Validamos perfil antes de confirmar el cupo. El
-              precio se comparte durante la entrevista.
+              Completa este breve formulario para acceder a nuestros programas y desbloquear recursos exclusivos en el Portal Techne. Un asesor validará tu perfil.
             </p>
-
-            {/* Stats Grid */}
-            <div className="grid grid-cols-2 gap-4">
-              {stats.map((s, i) => (
-                <motion.div
-                  key={s.label}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1, duration: 0.4 }}
-                  className="bg-white/[0.03] border border-white/[0.06] rounded-xl p-5"
-                >
-                  <p className="font-serif text-[24px] md:text-[28px] text-[#2B6AFF] leading-none">
-                    {s.value}
-                  </p>
-                  <p className="font-sans text-xs text-white/45 mt-2 leading-snug">
-                    {s.label}
-                  </p>
-                </motion.div>
-              ))}
-            </div>
           </motion.div>
 
-          {/* Right Column - Form */}
+          {/* Right Column - Multi-Step Form */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ delay: 0.15, duration: 0.6 }}
-            className="bg-white/[0.04] border border-white/[0.08] rounded-2xl p-6 md:p-8"
+            className="bg-white/[0.04] border border-white/[0.08] rounded-2xl p-6 md:p-8 min-h-[400px] flex flex-col justify-center"
           >
-            <div className="space-y-4">
-              {/* Nombre + Apellidos */}
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <label className="font-sans text-sm text-white/80 mb-1.5 block">
-                    Nombre<span className="text-[#2B6AFF]">*</span>
-                  </label>
-                  <input
-                    type="text"
-                    name="nombre"
-                    value={form.nombre}
-                    onChange={handleChange}
-                    className="w-full bg-white/[0.06] border border-white/[0.12] rounded-lg px-4 py-3 text-white text-sm placeholder:text-white/30 focus:border-[#2B6AFF] focus:shadow-[0_0_0_3px_rgba(43,106,255,0.15)] outline-none transition-all"
-                    placeholder="Nombre"
-                  />
-                </div>
-                <div>
-                  <label className="font-sans text-sm text-white/80 mb-1.5 block">
-                    Apellidos<span className="text-[#2B6AFF]">*</span>
-                  </label>
-                  <input
-                    type="text"
-                    name="apellidos"
-                    value={form.apellidos}
-                    onChange={handleChange}
-                    className="w-full bg-white/[0.06] border border-white/[0.12] rounded-lg px-4 py-3 text-white text-sm placeholder:text-white/30 focus:border-[#2B6AFF] focus:shadow-[0_0_0_3px_rgba(43,106,255,0.15)] outline-none transition-all"
-                    placeholder="Apellidos"
-                  />
-                </div>
-              </div>
-
-              {/* Correo */}
-              <div>
-                <label className="font-sans text-sm text-white/80 mb-1.5 block">
-                  Correo Empresarial<span className="text-[#2B6AFF]">*</span>
-                </label>
-                <input
-                  type="email"
-                  name="correo"
-                  value={form.correo}
-                  onChange={handleChange}
-                  className="w-full bg-white/[0.06] border border-white/[0.12] rounded-lg px-4 py-3 text-white text-sm placeholder:text-white/30 focus:border-[#2B6AFF] focus:shadow-[0_0_0_3px_rgba(43,106,255,0.15)] outline-none transition-all"
-                  placeholder="correo@empresa.com"
-                />
-              </div>
-
-              {/* Rol */}
-              <div>
-                <label className="font-sans text-sm text-white/80 mb-1.5 block">
-                  Rol<span className="text-[#2B6AFF]">*</span>
-                </label>
-                <select
-                  name="rol"
-                  value={form.rol}
-                  onChange={handleChange}
-                  className="w-full bg-white/[0.06] border border-white/[0.12] rounded-lg px-4 py-3 text-white text-sm focus:border-[#2B6AFF] focus:shadow-[0_0_0_3px_rgba(43,106,255,0.15)] outline-none transition-all appearance-none"
+            <AnimatePresence mode="wait">
+              
+              {/* STEP 0: Tipo de perfil */}
+              {step === 0 && (
+                <motion.div
+                  key="step0"
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -20 }}
+                  transition={{ duration: 0.3 }}
                 >
-                  <option value="" className="bg-[#1a1a1a]">
-                    Selecciona tu rol
-                  </option>
-                  <option value="ceo" className="bg-[#1a1a1a]">
-                    CEO / Director General
-                  </option>
-                  <option value="clevel" className="bg-[#1a1a1a]">
-                    C-Level (CIO, CTO, CMO, etc.)
-                  </option>
-                  <option value="vp" className="bg-[#1a1a1a]">
-                    VP / Vicepresidente
-                  </option>
-                  <option value="director" className="bg-[#1a1a1a]">
-                    Director / Gerente
-                  </option>
-                  <option value="otro" className="bg-[#1a1a1a]">
-                    Otro
-                  </option>
-                </select>
-              </div>
+                  <h3 className="font-serif text-2xl text-white mb-6">¿Cómo deseas aplicar?</h3>
+                  <div className="space-y-4">
+                    <button
+                      onClick={() => {
+                        setForm((prev) => ({ ...prev, tipoPerfil: "profesionista" }));
+                        handleNext();
+                      }}
+                      className="w-full text-left bg-white/[0.06] hover:bg-white/[0.1] border border-white/[0.12] hover:border-[#2B6AFF]/50 rounded-xl p-5 transition-all"
+                    >
+                      <h4 className="text-white font-medium mb-1">Como Profesional Independiente</h4>
+                      <p className="text-sm text-white/50">Busco formarme a título personal para mejorar mis habilidades.</p>
+                    </button>
+                    <button
+                      onClick={() => {
+                        setForm((prev) => ({ ...prev, tipoPerfil: "empresa" }));
+                        handleNext();
+                      }}
+                      className="w-full text-left bg-white/[0.06] hover:bg-white/[0.1] border border-white/[0.12] hover:border-[#2B6AFF]/50 rounded-xl p-5 transition-all"
+                    >
+                      <h4 className="text-white font-medium mb-1">Represento a una Empresa</h4>
+                      <p className="text-sm text-white/50">Busco capacitación o un programa a medida para mi equipo.</p>
+                    </button>
+                  </div>
+                </motion.div>
+              )}
 
-              {/* Teléfono */}
-              <div>
-                <label className="font-sans text-sm text-white/80 mb-1.5 block">
-                  Número de teléfono<span className="text-[#2B6AFF]">*</span>
-                </label>
-                <div className="flex gap-2">
-                  <span className="inline-flex items-center bg-white/[0.06] border border-white/[0.12] rounded-lg px-3 py-3 text-white/60 text-sm">
-                    MX ▼ +52
-                  </span>
-                  <input
-                    type="tel"
-                    name="telefono"
-                    value={form.telefono}
-                    onChange={handleChange}
-                    className="flex-1 bg-white/[0.06] border border-white/[0.12] rounded-lg px-4 py-3 text-white text-sm placeholder:text-white/30 focus:border-[#2B6AFF] focus:shadow-[0_0_0_3px_rgba(43,106,255,0.15)] outline-none transition-all"
-                    placeholder="55 1234 5678"
-                  />
-                </div>
-              </div>
+              {/* STEP 1: Datos Personales */}
+              {step === 1 && (
+                <motion.div
+                  key="step1"
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -20 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <div className="flex items-center gap-4 mb-6">
+                    <button onClick={handleBack} className="text-white/40 hover:text-white text-sm">
+                      ← Volver
+                    </button>
+                    <h3 className="font-serif text-2xl text-white">Tus datos</h3>
+                  </div>
+                  
+                  <div className="space-y-4">
+                    <div className="grid grid-cols-2 gap-4">
+                      <div>
+                        <input
+                          type="text"
+                          name="nombre"
+                          value={form.nombre}
+                          onChange={handleChange}
+                          className="w-full bg-white/[0.06] border border-white/[0.12] rounded-lg px-4 py-3 text-white text-sm placeholder:text-white/30 focus:border-[#2B6AFF] outline-none"
+                          placeholder="Nombre"
+                        />
+                      </div>
+                      <div>
+                        <input
+                          type="text"
+                          name="apellidos"
+                          value={form.apellidos}
+                          onChange={handleChange}
+                          className="w-full bg-white/[0.06] border border-white/[0.12] rounded-lg px-4 py-3 text-white text-sm placeholder:text-white/30 focus:border-[#2B6AFF] outline-none"
+                          placeholder="Apellidos"
+                        />
+                      </div>
+                    </div>
+                    <div>
+                      <input
+                        type="email"
+                        name="correo"
+                        value={form.correo}
+                        onChange={handleChange}
+                        className="w-full bg-white/[0.06] border border-white/[0.12] rounded-lg px-4 py-3 text-white text-sm placeholder:text-white/30 focus:border-[#2B6AFF] outline-none"
+                        placeholder="Correo electrónico"
+                      />
+                    </div>
+                    <div>
+                      <input
+                        type="tel"
+                        name="telefono"
+                        value={form.telefono}
+                        onChange={handleChange}
+                        className="w-full bg-white/[0.06] border border-white/[0.12] rounded-lg px-4 py-3 text-white text-sm placeholder:text-white/30 focus:border-[#2B6AFF] outline-none"
+                        placeholder="Teléfono"
+                      />
+                    </div>
+                    {form.tipoPerfil === "empresa" && (
+                      <div>
+                        <input
+                          type="text"
+                          name="empresa"
+                          value={form.empresa}
+                          onChange={handleChange}
+                          className="w-full bg-white/[0.06] border border-white/[0.12] rounded-lg px-4 py-3 text-white text-sm placeholder:text-white/30 focus:border-[#2B6AFF] outline-none"
+                          placeholder="Nombre de la Empresa"
+                        />
+                      </div>
+                    )}
+                    <button
+                      onClick={handleNext}
+                      disabled={!form.nombre || !form.correo}
+                      className="w-full text-[15px] font-semibold text-white bg-[#2B6AFF] hover:bg-[#1A5AF5] disabled:opacity-50 py-3.5 rounded-lg transition-colors mt-2"
+                    >
+                      Continuar
+                    </button>
+                  </div>
+                </motion.div>
+              )}
 
-              {/* Empresa */}
-              <div>
-                <label className="font-sans text-sm text-white/80 mb-1.5 block">
-                  Tamaño de tu empresa (# empleados)
-                  <span className="text-[#2B6AFF]">*</span>
-                </label>
-                <input
-                  type="number"
-                  name="empresa"
-                  value={form.empresa}
-                  onChange={handleChange}
-                  className="w-full bg-white/[0.06] border border-white/[0.12] rounded-lg px-4 py-3 text-white text-sm placeholder:text-white/30 focus:border-[#2B6AFF] focus:shadow-[0_0_0_3px_rgba(43,106,255,0.15)] outline-none transition-all"
-                  placeholder="300+"
-                />
-              </div>
+              {/* STEP 2: Interés */}
+              {step === 2 && (
+                <motion.div
+                  key="step2"
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -20 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <div className="flex items-center gap-4 mb-6">
+                    <button onClick={handleBack} className="text-white/40 hover:text-white text-sm">
+                      ← Volver
+                    </button>
+                    <h3 className="font-serif text-2xl text-white">¿Qué programa te interesa?</h3>
+                  </div>
 
-              {/* Progress Bar */}
-              <div className="pt-2">
-                <div className="h-[3px] bg-white/[0.08] rounded-full overflow-hidden">
+                  <div className="space-y-4">
+                    <select
+                      name="programaInteres"
+                      value={form.programaInteres}
+                      onChange={handleChange}
+                      className="w-full bg-white/[0.06] border border-white/[0.12] rounded-lg px-4 py-3 text-white text-sm focus:border-[#2B6AFF] outline-none appearance-none"
+                    >
+                      <option value="" className="bg-[#1a1a1a]">Selecciona un programa</option>
+                      <option value="direccion" className="bg-[#1a1a1a]">Dirección Estratégica en IA (10 semanas)</option>
+                      <option value="intensivo" className="bg-[#1a1a1a]">Certificación Intensiva (10 horas)</option>
+                      {form.tipoPerfil === "empresa" && (
+                        <option value="medida" className="bg-[#1a1a1a]">Programas Empresariales a medida</option>
+                      )}
+                    </select>
+
+                    <button
+                      onClick={handleNext}
+                      disabled={!form.programaInteres}
+                      className="w-full text-[15px] font-semibold text-white bg-[#2B6AFF] hover:bg-[#1A5AF5] disabled:opacity-50 py-3.5 rounded-lg transition-colors mt-4"
+                    >
+                      Enviar Solicitud
+                    </button>
+                  </div>
+                </motion.div>
+              )}
+
+              {/* STEP 3: Success */}
+              {step === 3 && (
+                <motion.div
+                  key="step3"
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  className="text-center py-6"
+                >
+                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[#2B6AFF]/10 text-[#2B6AFF] mb-6">
+                    <CheckCircle2 size={32} />
+                  </div>
+                  <h3 className="font-serif text-2xl text-white mb-3">¡Solicitud recibida!</h3>
+                  <p className="text-white/60 text-[15px] mb-6 max-w-sm mx-auto">
+                    Gracias por tu interés. Un asesor se comunicará contigo en las próximas 24 horas hábiles.
+                  </p>
+                  <p className="text-sm font-medium text-[#2B6AFF] animate-pulse">
+                    Redirigiendo a tu Portal Techne...
+                  </p>
+                </motion.div>
+              )}
+            </AnimatePresence>
+            
+            {/* Progress indicators for steps 0-2 */}
+            {step < 3 && (
+              <div className="flex items-center justify-center gap-2 mt-8">
+                {[0, 1, 2].map((i) => (
                   <div
-                    className="h-full bg-[#2B6AFF] rounded-full transition-all duration-500"
-                    style={{ width: `${progress}%` }}
+                    key={i}
+                    className={`h-1.5 rounded-full transition-all duration-300 ${
+                      i === step ? "w-8 bg-[#2B6AFF]" : "w-1.5 bg-white/20"
+                    }`}
                   />
-                </div>
+                ))}
               </div>
-
-              {/* Submit */}
-              <button
-                type="button"
-                className="w-full font-sans text-[15px] font-semibold text-white bg-[#2B6AFF] hover:bg-[#1A5AF5] py-3.5 rounded-lg transition-colors duration-200"
-              >
-                Siguiente
-              </button>
-            </div>
+            )}
           </motion.div>
         </div>
       </div>

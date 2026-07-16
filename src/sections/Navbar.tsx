@@ -6,7 +6,7 @@ const navLinks = [
   { label: "Programas", href: "#programas" },
   { label: "Contenidos", href: "#contenidos" },
   { label: "Pilares", href: "#ruta" },
-  { label: "Materiales", href: "#" },
+  { label: "Materiales", href: "/portal" },
 ];
 
 export default function Navbar() {

@@ -1,20 +1,23 @@
-import { useState } from 'react'
-import '../App.css'
+import Navbar from "../sections/Navbar";
+import Hero from "../sections/Hero";
+import ProgramasUnificados from "../sections/ProgramasUnificados";
+import Resultados from "../sections/Resultados";
+import RutaEstrategica from "../sections/RutaEstrategica";
+import CTABanner from "../sections/CTABanner";
+import Formulario from "../sections/Formulario";
+import Footer from "../sections/Footer";
 
 export default function Home() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-    </>
-  )
+    <div className="min-h-screen bg-[#0A0A0A]">
+      <Navbar />
+      <Hero />
+      <ProgramasUnificados />
+      <Resultados />
+      <RutaEstrategica />
+      <CTABanner />
+      <Formulario />
+      <Footer />
+    </div>
+  );
 }
