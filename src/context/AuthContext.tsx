@@ -3,7 +3,7 @@ import type { ReactNode } from "react";
 import { auth, db } from "../firebase";
 import { onAuthStateChanged } from "firebase/auth";
 import type { User } from "firebase/auth";
-import { doc, getDoc } from "firebase/firestore";
+import { doc, onSnapshot } from "firebase/firestore";
 
 interface AuthContextType {
   currentUser: User | null;
@@ -25,28 +25,45 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, async (user) => {
+    let unsubscribeSnapshot: (() => void) | undefined;
+
+    const unsubscribeAuth = onAuthStateChanged(auth, (user) => {
       setCurrentUser(user);
+      
+      if (unsubscribeSnapshot) {
+        unsubscribeSnapshot();
+      }
+
       if (user) {
-        // Consultar en Firestore si el usuario tiene acceso
-        try {
-          const userDoc = await getDoc(doc(db, "users", user.uid));
-          if (userDoc.exists()) {
-            setHasPortalAccess(userDoc.data().hasPortalAccess === true);
-          } else {
+        // Escuchar en tiempo real el documento del usuario
+        unsubscribeSnapshot = onSnapshot(
+          doc(db, "users", user.uid),
+          (userDoc) => {
+            if (userDoc.exists()) {
+              setHasPortalAccess(userDoc.data().hasPortalAccess === true);
+            } else {
+              setHasPortalAccess(false);
+            }
+            setLoading(false);
+          },
+          (error) => {
+            console.error("Error fetching user document:", error);
             setHasPortalAccess(false);
+            setLoading(false);
           }
-        } catch (error) {
-          console.error("Error fetching user document:", error);
-          setHasPortalAccess(false);
-        }
+        );
       } else {
         setHasPortalAccess(false);
+        setLoading(false);
       }
-      setLoading(false);
     });
 
-    return unsubscribe;
+    return () => {
+      unsubscribeAuth();
+      if (unsubscribeSnapshot) {
+        unsubscribeSnapshot();
+      }
+    };
   }, []);
 
   return (
