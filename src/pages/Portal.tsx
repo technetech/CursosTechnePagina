@@ -1,5 +1,15 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Download, FileText, Newspaper, ChevronRight, Shuffle, Search, Building2, BookA, Crown, Lock, LogOut, Mail } from "lucide-react";
+import { Link } from "react-router";
+import { glosario } from "../data/glosario";
+import { aiFacts } from "../data/randomFacts";
+import { directorio } from "../data/directorio";
+import { useAuth } from "../context/AuthContext";
+import { auth, db } from "../firebase";
+import { signInWithPopup, GoogleAuthProvider, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut } from "firebase/auth";
+import { doc, setDoc } from "firebase/firestore";
+import { motion, AnimatePresence } from "framer-motion";
 import { Download, FileText, Newspaper, ChevronRight, Shuffle, Search, Building2, BookA, Crown, Lock } from "lucide-react";
 import { Link } from "react-router";
 import { glosario } from "../data/glosario";
@@ -61,8 +71,12 @@ const tabs = [
 ];
 
 export default function Portal() {
-  // MOCKUP AUTHENTICATION STATE
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const { currentUser, hasPortalAccess, loading } = useAuth();
+  const [authMode, setAuthMode] = useState<"options" | "login" | "register">("options");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [authError, setAuthError] = useState("");
+  const [authLoading, setAuthLoading] = useState(false);
   
   const [activeTab, setActiveTab] = useState("boletin");
   const [randomFact, setRandomFact] = useState("Haz clic en el botón para descubrir un dato sobre la Inteligencia Artificial.");
@@ -80,14 +94,67 @@ export default function Portal() {
   // Fix scroll bug
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [isAuthenticated]);
+  }, [currentUser]);
 
   const generateRandomFact = () => {
     const randomIndex = Math.floor(Math.random() * aiFacts.length);
     setRandomFact(aiFacts[randomIndex]);
   };
 
-  if (!isAuthenticated) {
+  const handleGoogleSignIn = async () => {
+    try {
+      setAuthError("");
+      const provider = new GoogleAuthProvider();
+      const result = await signInWithPopup(auth, provider);
+      // If it's a new user (or just to be safe), ensure they have a user doc
+      // Ideally we check if doc exists, if not, create it.
+      await setDoc(doc(db, "users", result.user.uid), {
+        email: result.user.email,
+        displayName: result.user.displayName,
+        hasPortalAccess: true, // We give access to anyone who logs in directly to the portal (as requested)
+        createdAt: new Date().toISOString()
+      }, { merge: true });
+    } catch (error: any) {
+      setAuthError(error.message);
+    }
+  };
+
+  const handleEmailAuth = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setAuthLoading(true);
+    setAuthError("");
+    try {
+      if (authMode === "register") {
+        const result = await createUserWithEmailAndPassword(auth, email, password);
+        await setDoc(doc(db, "users", result.user.uid), {
+          email: result.user.email,
+          hasPortalAccess: true,
+          createdAt: new Date().toISOString()
+        });
+      } else if (authMode === "login") {
+        await signInWithEmailAndPassword(auth, email, password);
+      }
+    } catch (error: any) {
+      setAuthError(error.message);
+    } finally {
+      setAuthLoading(false);
+    }
+  };
+
+  const handleSignOut = async () => {
+    await signOut(auth);
+  };
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-[#0A0A0A] flex items-center justify-center">
+        <div className="w-8 h-8 border-2 border-[#2B6AFF] border-t-transparent rounded-full animate-spin"></div>
+      </div>
+    );
+  }
+
+  // Si no está logueado O si está logueado pero NO tiene acceso (aunque aquí le damos acceso por defecto a todos los que entran al portal)
+  if (!currentUser || !hasPortalAccess) {
     return (
       <div className="min-h-screen bg-[#0A0A0A] flex flex-col">
         <header className="absolute top-0 left-0 right-0 z-50 h-20 flex items-center px-6 md:px-12">
@@ -102,26 +169,109 @@ export default function Portal() {
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="bg-[#111] border border-white/10 rounded-2xl p-8 md:p-12 max-w-md w-full relative z-10 shadow-2xl text-center"
+            className="bg-[#111] border border-white/10 rounded-2xl p-8 md:p-10 max-w-md w-full relative z-10 shadow-2xl"
           >
             <div className="w-16 h-16 bg-[#2B6AFF]/10 text-[#2B6AFF] rounded-full flex items-center justify-center mx-auto mb-6">
               <Lock size={32} />
             </div>
-            <h2 className="font-serif text-3xl text-white mb-2">Espacio Techne</h2>
-            <p className="text-white/50 text-sm mb-8">Ingresa para acceder a recursos y noticias exclusivas.</p>
             
-            <button 
-              onClick={() => setIsAuthenticated(true)}
-              className="w-full bg-[#2B6AFF] hover:bg-[#1A5AF5] text-white font-semibold py-3.5 rounded-lg transition-all shadow-lg hover:shadow-[#2B6AFF]/20"
-            >
-              Iniciar Sesión (Mockup)
-            </button>
-            <button 
-              onClick={() => setIsAuthenticated(true)}
-              className="w-full bg-white/5 hover:bg-white/10 text-white/80 font-medium py-3.5 rounded-lg transition-all mt-3 border border-white/5"
-            >
-              Crear Cuenta (Mockup)
-            </button>
+            {authMode === "options" && (
+              <div className="text-center">
+                <h2 className="font-serif text-3xl text-white mb-2">Espacio Techne</h2>
+                <p className="text-white/50 text-sm mb-8">Ingresa para acceder a recursos y noticias exclusivas.</p>
+                
+                {currentUser && !hasPortalAccess && (
+                  <div className="bg-red-500/10 border border-red-500/20 text-red-400 p-3 rounded-lg mb-6 text-sm">
+                    Tu cuenta no tiene acceso a este portal. Contacta a soporte.
+                  </div>
+                )}
+
+                <button 
+                  onClick={handleGoogleSignIn}
+                  className="w-full bg-white hover:bg-gray-100 text-black font-semibold py-3 rounded-lg transition-all shadow-lg flex items-center justify-center gap-2 mb-3"
+                >
+                  <img src="https://www.google.com/favicon.ico" alt="Google" className="w-5 h-5" />
+                  Continuar con Google
+                </button>
+                <button 
+                  onClick={() => setAuthMode("login")}
+                  className="w-full bg-[#2B6AFF] hover:bg-[#1A5AF5] text-white font-semibold py-3 rounded-lg transition-all shadow-lg hover:shadow-[#2B6AFF]/20 flex items-center justify-center gap-2 mb-3"
+                >
+                  <Mail size={18} />
+                  Iniciar con Correo
+                </button>
+                
+                <button 
+                  onClick={() => setAuthMode("register")}
+                  className="w-full text-white/50 hover:text-white text-sm mt-4 font-medium"
+                >
+                  ¿No tienes cuenta? Regístrate gratis
+                </button>
+              </div>
+            )}
+
+            {(authMode === "login" || authMode === "register") && (
+              <div>
+                <h2 className="font-serif text-2xl text-white mb-2 text-center">
+                  {authMode === "login" ? "Iniciar Sesión" : "Crear Cuenta"}
+                </h2>
+                
+                {authError && (
+                  <div className="bg-red-500/10 border border-red-500/20 text-red-400 p-3 rounded-lg mb-4 text-xs">
+                    {authError}
+                  </div>
+                )}
+
+                <form onSubmit={handleEmailAuth} className="space-y-4 mt-6">
+                  <div>
+                    <label className="block text-white/70 text-xs font-medium mb-1.5">Correo Electrónico</label>
+                    <input 
+                      type="email" 
+                      required
+                      value={email}
+                      onChange={e => setEmail(e.target.value)}
+                      className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-[#2B6AFF] transition-colors"
+                      placeholder="tu@correo.com"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-white/70 text-xs font-medium mb-1.5">Contraseña</label>
+                    <input 
+                      type="password" 
+                      required
+                      value={password}
+                      onChange={e => setPassword(e.target.value)}
+                      className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-[#2B6AFF] transition-colors"
+                      placeholder="••••••••"
+                    />
+                  </div>
+                  
+                  <button 
+                    type="submit"
+                    disabled={authLoading}
+                    className="w-full bg-[#2B6AFF] hover:bg-[#1A5AF5] disabled:opacity-50 text-white font-semibold py-3 rounded-lg transition-all shadow-lg mt-2"
+                  >
+                    {authLoading ? "Cargando..." : (authMode === "login" ? "Entrar" : "Registrarse")}
+                  </button>
+                </form>
+
+                <button 
+                  onClick={() => { setAuthMode("options"); setAuthError(""); }}
+                  className="w-full text-white/50 hover:text-white text-sm mt-6 font-medium"
+                >
+                  &larr; Volver
+                </button>
+              </div>
+            )}
+            
+            {currentUser && !hasPortalAccess && (
+              <button 
+                onClick={handleSignOut}
+                className="w-full text-white/50 hover:text-white text-sm mt-6 font-medium"
+              >
+                Cerrar sesión actual
+              </button>
+            )}
           </motion.div>
         </div>
       </div>
@@ -142,9 +292,9 @@ export default function Portal() {
             <span className="w-px h-5 bg-white/20" />
             <span className="text-sm font-medium text-white/70">Espacio Techne</span>
           </div>
-          <Link to="/" className="text-sm text-white/50 hover:text-white transition-colors">
-            Cerrar Sesión
-          </Link>
+          <button onClick={handleSignOut} className="text-sm text-white/50 hover:text-white transition-colors flex items-center gap-1">
+            <LogOut size={16} /> Cerrar Sesión
+          </button>
         </div>
       </header>
 

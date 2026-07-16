@@ -7,14 +7,14 @@ import { getAuth } from "firebase/auth";
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
-// Reemplaza esto con la configuración de tu proyecto en Firebase Console
 const firebaseConfig = {
-  apiKey: "TU_API_KEY",
-  authDomain: "tu-proyecto.firebaseapp.com",
-  projectId: "tu-proyecto",
-  storageBucket: "tu-proyecto.appspot.com",
-  messagingSenderId: "SENDER_ID",
-  appId: "APP_ID"
+  apiKey: "AIzaSyASeLvVibZfH1JoEbuIO5f8NKDaBVKNtAI",
+  authDomain: "techneespacioportal.firebaseapp.com",
+  projectId: "techneespacioportal",
+  storageBucket: "techneespacioportal.firebasestorage.app",
+  messagingSenderId: "71912857855",
+  appId: "1:71912857855:web:7f0d3e07119d6abefe2cca",
+  measurementId: "G-MY7LTQQZ57"
 };
 
 // Initialize Firebase

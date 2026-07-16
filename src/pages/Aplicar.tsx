@@ -1,7 +1,10 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate, Link } from "react-router";
-import { CheckCircle2, Crown } from "lucide-react";
+import { CheckCircle2, Crown, Loader2 } from "lucide-react";
+import { db, auth } from "../firebase";
+import { collection, addDoc, doc, setDoc } from "firebase/firestore";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 
 export default function Aplicar() {
   const navigate = useNavigate();
@@ -15,6 +18,9 @@ export default function Aplicar() {
     empresa: "",
     programaInteres: "",
   });
+  const [password, setPassword] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
 
   // Ensure page starts at the top
   useEffect(() => {
@@ -35,14 +41,57 @@ export default function Aplicar() {
     setStep((prev) => Math.max(0, prev - 1));
   };
 
-  const handleCreateAccount = (wantsAccount: boolean) => {
-    if (wantsAccount) {
-      setStep(4); // Pantalla de mockup creacion
+  const handleDeclineAccount = async () => {
+    setIsSubmitting(true);
+    try {
+      await addDoc(collection(db, "applications"), {
+        ...form,
+        wantsPortalAccount: false,
+        status: "nuevo",
+        createdAt: new Date().toISOString()
+      });
+      setStep(6); // Success, no account
+    } catch (error: any) {
+      setErrorMsg(error.message);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleCreateAccount = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setErrorMsg("");
+    try {
+      // 1. Create auth user
+      const userCredential = await createUserWithEmailAndPassword(auth, form.correo, password);
+      const user = userCredential.user;
+
+      // 2. Save user to 'users' collection
+      await setDoc(doc(db, "users", user.uid), {
+        email: form.correo,
+        displayName: `${form.nombre} ${form.apellidos}`.trim(),
+        hasPortalAccess: true,
+        createdAt: new Date().toISOString()
+      });
+
+      // 3. Save lead to 'applications' collection
+      await addDoc(collection(db, "applications"), {
+        ...form,
+        wantsPortalAccount: true,
+        uid: user.uid,
+        status: "nuevo",
+        createdAt: new Date().toISOString()
+      });
+
+      setStep(5); // Success, redirecting...
       setTimeout(() => {
         navigate("/portal");
-      }, 3500);
-    } else {
-      setStep(5); // Pantalla de "No cuenta, gracias"
+      }, 3000);
+    } catch (error: any) {
+      setErrorMsg(error.message);
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -279,42 +328,72 @@ export default function Aplicar() {
                       <p className="text-sm text-white/50">Tendrás acceso inmediato a boletines, recursos descargables y herramientas exclusivas de IA.</p>
                     </div>
 
-                    <div className="grid grid-cols-2 gap-4">
+                    <div className="grid grid-cols-2 gap-4 mt-6">
                       <button
-                        onClick={() => handleCreateAccount(true)}
+                        onClick={() => setStep(4)}
                         className="w-full text-sm font-semibold text-white bg-[#2B6AFF] hover:bg-[#1A5AF5] py-3 rounded-lg transition-colors"
                       >
                         Sí, crear cuenta
                       </button>
                       <button
-                        onClick={() => handleCreateAccount(false)}
-                        className="w-full text-sm font-medium text-white/70 hover:text-white bg-white/[0.06] hover:bg-white/[0.1] py-3 rounded-lg transition-colors"
+                        onClick={handleDeclineAccount}
+                        disabled={isSubmitting}
+                        className="w-full text-sm font-medium text-white/70 hover:text-white bg-white/[0.06] hover:bg-white/[0.1] py-3 rounded-lg transition-colors flex justify-center items-center gap-2"
                       >
-                        No por ahora
+                        {isSubmitting ? <Loader2 size={16} className="animate-spin" /> : "No por ahora"}
                       </button>
                     </div>
                   </motion.div>
                 )}
 
-                {/* STEP 4: Creating Account (Mockup Redirect) */}
+                {/* STEP 4: Password creation */}
                 {step === 4 && (
                   <motion.div
                     key="step4"
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    className="text-center py-6"
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -20 }}
+                    transition={{ duration: 0.3 }}
                   >
-                    <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[#2B6AFF]/10 text-[#2B6AFF] mb-6">
-                      <CheckCircle2 size={32} />
+                    <div className="flex items-center gap-4 mb-6">
+                      <button onClick={() => setStep(3)} className="text-white/40 hover:text-white text-sm">
+                        ← Volver
+                      </button>
+                      <h3 className="font-serif text-2xl text-white">Crea tu contraseña</h3>
                     </div>
-                    <h3 className="font-serif text-2xl text-white mb-3">Creando tu espacio...</h3>
-                    <p className="text-sm font-medium text-[#2B6AFF] animate-pulse">
-                      Redirigiendo a tu Portal Techne...
+                    <p className="text-white/60 text-sm mb-6">
+                      Usarás tu correo <strong>{form.correo}</strong> para iniciar sesión en el Espacio Techne. Elige una contraseña segura.
                     </p>
+
+                    {errorMsg && (
+                      <div className="bg-red-500/10 border border-red-500/20 text-red-400 p-3 rounded-lg mb-4 text-xs">
+                        {errorMsg}
+                      </div>
+                    )}
+
+                    <form onSubmit={handleCreateAccount} className="space-y-4">
+                      <div>
+                        <input
+                          type="password"
+                          required
+                          value={password}
+                          onChange={(e) => setPassword(e.target.value)}
+                          className="w-full bg-white/[0.06] border border-white/[0.12] rounded-lg px-4 py-3 text-white text-sm placeholder:text-white/30 focus:border-[#2B6AFF] outline-none"
+                          placeholder="••••••••"
+                        />
+                      </div>
+                      <button
+                        type="submit"
+                        disabled={isSubmitting || password.length < 6}
+                        className="w-full flex justify-center items-center gap-2 text-[15px] font-semibold text-white bg-[#2B6AFF] hover:bg-[#1A5AF5] disabled:opacity-50 py-3.5 rounded-lg transition-colors mt-2"
+                      >
+                        {isSubmitting ? <Loader2 size={18} className="animate-spin" /> : "Crear mi cuenta"}
+                      </button>
+                    </form>
                   </motion.div>
                 )}
 
-                {/* STEP 5: No Account, Success message */}
+                {/* STEP 5: Creating Account (Redirect) */}
                 {step === 5 && (
                   <motion.div
                     key="step5"
@@ -322,12 +401,30 @@ export default function Aplicar() {
                     animate={{ opacity: 1, scale: 1 }}
                     className="text-center py-6"
                   >
+                    <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[#2B6AFF]/10 text-[#2B6AFF] mb-6">
+                      <CheckCircle2 size={32} />
+                    </div>
+                    <h3 className="font-serif text-2xl text-white mb-3">¡Cuenta creada con éxito!</h3>
+                    <p className="text-sm font-medium text-[#2B6AFF] animate-pulse">
+                      Iniciando sesión y redirigiendo a tu Portal Techne...
+                    </p>
+                  </motion.div>
+                )}
+
+                {/* STEP 6: No Account, Success message */}
+                {step === 6 && (
+                  <motion.div
+                    key="step6"
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    className="text-center py-6"
+                  >
                     <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-500/10 text-green-500 mb-6">
                       <CheckCircle2 size={32} />
                     </div>
-                    <h3 className="font-serif text-2xl text-white mb-3">Todo listo.</h3>
+                    <h3 className="font-serif text-2xl text-white mb-3">Solicitud enviada</h3>
                     <p className="text-white/60 text-[15px] mb-6 max-w-sm mx-auto">
-                      Gracias. Un asesor te hablará personalmente en las próximas 24 horas.
+                      Gracias por aplicar. Un asesor revisará tu perfil y te contactará personalmente en las próximas 24 horas.
                     </p>
                     <Link to="/" className="inline-block text-sm font-semibold text-[#2B6AFF] border border-[#2B6AFF] hover:bg-[#2B6AFF] hover:text-white transition-colors px-6 py-2.5 rounded-full">
                       Volver al inicio
