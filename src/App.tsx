@@ -1,8 +1,7 @@
 import Navbar from "./sections/Navbar";
 import Hero from "./sections/Hero";
 import LogoCarousel from "./sections/LogoCarousel";
-import ProximasFechas from "./sections/ProximasFechas";
-import DetallesCursos from "./sections/DetallesCursos";
+import ProgramasUnificados from "./sections/ProgramasUnificados";
 import Resultados from "./sections/Resultados";
 import RutaEstrategica from "./sections/RutaEstrategica";
 import Testimonios from "./sections/Testimonios";
@@ -17,8 +16,7 @@ function App() {
       <Navbar />
       <Hero />
       <LogoCarousel />
-      <ProximasFechas />
-      <DetallesCursos />
+      <ProgramasUnificados />
       <Resultados />
       <RutaEstrategica />
       <Testimonios />
