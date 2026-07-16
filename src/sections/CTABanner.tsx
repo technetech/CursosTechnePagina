@@ -39,8 +39,7 @@ export default function CTABanner() {
           transition={{ delay: 0.15, duration: 0.6 }}
           className="font-sans text-[15px] text-white/65 max-w-[440px] mb-8 leading-relaxed"
         >
-          Más de 1,100 líderes en LATAM ya pasaron por este programa. Hablamos
-          con cada postulante antes de aceptarlo en la cohorte.
+          Las empresas que liderarán la próxima década no serán las que tengan acceso a la Inteligencia Artificial, sino aquellas cuyos equipos sepan implementarla. Hoy, esa sigue siendo la mayor oportunidad de crecimiento en Latinoamérica.
         </motion.p>
 
         <motion.div
