@@ -58,19 +58,20 @@ export default function Footer() {
               <li className="flex items-center gap-2.5">
                 <Mail size={15} className="text-white/40 flex-shrink-0" />
                 <span className="font-sans text-sm text-white/50">
-                  contacto@techne.ai
+                  techne.tech.lab@gmail.com
                 </span>
               </li>
               <li className="flex items-center gap-2.5">
                 <Phone size={15} className="text-white/40 flex-shrink-0" />
                 <span className="font-sans text-sm text-white/50">
-                  +52 55 1234 5678
+                  812 444 3104
                 </span>
               </li>
-              <li className="flex items-center gap-2.5">
-                <MapPin size={15} className="text-white/40 flex-shrink-0" />
-                <span className="font-sans text-sm text-white/50">
-                  Ciudad de México, México
+              <li className="flex items-start gap-2.5">
+                <MapPin size={15} className="text-white/40 flex-shrink-0 mt-0.5" />
+                <span className="font-sans text-sm text-white/50 leading-snug">
+                  Guatemala 330, Vista Hermosa<br />
+                  Monterrey, N.L. 64820, México
                 </span>
               </li>
             </ul>

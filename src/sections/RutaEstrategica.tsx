@@ -74,8 +74,8 @@ export default function RutaEstrategica() {
               />
 
               {/* Module Tag */}
-              <span className="absolute top-4 left-4 font-mono text-[10px] font-semibold text-white bg-[#2B6AFF] px-3 py-1.5 rounded-md z-10">
-                {mod.num}
+              <span className="absolute top-4 left-4 font-mono text-[10px] font-semibold text-white bg-[#2B6AFF] px-3 py-1.5 rounded-md z-10 tracking-widest uppercase">
+                {mod.title}
               </span>
 
               {/* Content */}
