@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router";
 
 export default function Hero() {
   const titleWords = ["Programas", "de", "Inteligencia", "Artificial"];
@@ -91,12 +92,12 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.85, duration: 0.6 }}
         >
-          <a
-            href="#formulario"
+          <Link
+            to="/aplicar"
             className="inline-flex font-sans text-base font-semibold text-white bg-[#2B6AFF] hover:bg-[#1A5AF5] hover:-translate-y-px hover:shadow-[0_4px_20px_rgba(43,106,255,0.3)] active:translate-y-0 px-8 py-3.5 rounded-full transition-all duration-200"
           >
             Aplicar al programa
-          </a>
+          </Link>
         </motion.div>
 
       </div>

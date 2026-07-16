@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router";
 
 export default function CTABanner() {
   return (
@@ -48,12 +49,14 @@ export default function CTABanner() {
           viewport={{ once: true }}
           transition={{ delay: 0.3, duration: 0.6 }}
         >
-          <a
-            href="#formulario"
-            className="inline-flex font-sans text-sm font-semibold text-white bg-[#2B6AFF] hover:bg-[#1A5AF5] hover:-translate-y-px hover:shadow-[0_4px_20px_rgba(43,106,255,0.3)] active:translate-y-0 px-8 py-3.5 rounded-full transition-all duration-200"
-          >
-            Aplicar ahora
-          </a>
+          <div className="flex flex-col sm:flex-row items-center justify-start gap-4">
+            <Link
+              to="/aplicar"
+              className="inline-flex font-sans text-sm font-semibold text-white bg-[#2B6AFF] hover:bg-[#1A5AF5] hover:-translate-y-px hover:shadow-[0_4px_20px_rgba(43,106,255,0.3)] active:translate-y-0 px-8 py-3.5 rounded-full transition-all duration-200"
+            >
+              Aplicar al programa
+            </Link>
+          </div>
         </motion.div>
       </div>
     </section>

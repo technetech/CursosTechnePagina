@@ -4,7 +4,6 @@ import ProgramasUnificados from "../sections/ProgramasUnificados";
 import Resultados from "../sections/Resultados";
 import RutaEstrategica from "../sections/RutaEstrategica";
 import CTABanner from "../sections/CTABanner";
-import Formulario from "../sections/Formulario";
 import Footer from "../sections/Footer";
 
 export default function Home() {
@@ -16,7 +15,6 @@ export default function Home() {
       <Resultados />
       <RutaEstrategica />
       <CTABanner />
-      <Formulario />
       <Footer />
     </div>
   );

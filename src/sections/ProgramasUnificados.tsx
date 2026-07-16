@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Link } from "react-router";
 
 const unifiedCourses = [
   {
@@ -145,12 +146,12 @@ export default function ProgramasUnificados() {
                 </div>
 
                 <div>
-                  <a
-                    href="#formulario"
+                  <Link
+                    to="/aplicar"
                     className="inline-flex font-sans text-sm font-semibold text-white bg-[#2B6AFF] hover:bg-[#1A5AF5] hover:-translate-y-px active:translate-y-0 px-8 py-3 rounded-full transition-all duration-200"
                   >
                     Inscribirse al programa
-                  </a>
+                  </Link>
                 </div>
               </div>
             </motion.div>

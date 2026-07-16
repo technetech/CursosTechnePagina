@@ -5,7 +5,7 @@ const links = [
   { label: "Programas", href: "#programas" },
   { label: "Contenidos", href: "#contenidos" },
   { label: "Pilares", href: "#ruta" },
-  { label: "Materiales", href: "#" },
+  { label: "Espacio Techne", href: "/portal" },
 ];
 
 export default function Footer() {

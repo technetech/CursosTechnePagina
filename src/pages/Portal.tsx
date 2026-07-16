@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Download, FileText, Newspaper, ChevronRight, Shuffle, Search, Building2, BookA, Crown } from "lucide-react";
+import { Download, FileText, Newspaper, ChevronRight, Shuffle, Search, Building2, BookA, Crown, Lock } from "lucide-react";
 import { Link } from "react-router";
 
 // --- DUMMY DATA ---
@@ -33,13 +33,62 @@ const tabs = [
 ];
 
 export default function Portal() {
+  // MOCKUP AUTHENTICATION STATE
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  
   const [activeTab, setActiveTab] = useState("boletin");
   const [randomFact, setRandomFact] = useState("Haz clic en el botón para descubrir un dato sobre la Inteligencia Artificial.");
+
+  // Fix scroll bug
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [isAuthenticated]);
 
   const generateRandomFact = () => {
     const randomIndex = Math.floor(Math.random() * aiFacts.length);
     setRandomFact(aiFacts[randomIndex]);
   };
+
+  if (!isAuthenticated) {
+    return (
+      <div className="min-h-screen bg-[#0A0A0A] flex flex-col">
+        <header className="absolute top-0 left-0 right-0 z-50 h-20 flex items-center px-6 md:px-12">
+          <Link to="/" className="flex items-center hover:opacity-80 transition-opacity">
+            <img src="/images/logo.png" alt="Techne" className="h-7 w-auto" />
+          </Link>
+        </header>
+
+        <div className="flex-grow flex items-center justify-center p-6 relative">
+          <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse at center, rgba(43,106,255,0.08) 0%, transparent 50%)" }} />
+          
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="bg-[#111] border border-white/10 rounded-2xl p-8 md:p-12 max-w-md w-full relative z-10 shadow-2xl text-center"
+          >
+            <div className="w-16 h-16 bg-[#2B6AFF]/10 text-[#2B6AFF] rounded-full flex items-center justify-center mx-auto mb-6">
+              <Lock size={32} />
+            </div>
+            <h2 className="font-serif text-3xl text-white mb-2">Espacio Techne</h2>
+            <p className="text-white/50 text-sm mb-8">Ingresa para acceder a recursos y noticias exclusivas.</p>
+            
+            <button 
+              onClick={() => setIsAuthenticated(true)}
+              className="w-full bg-[#2B6AFF] hover:bg-[#1A5AF5] text-white font-semibold py-3.5 rounded-lg transition-all shadow-lg hover:shadow-[#2B6AFF]/20"
+            >
+              Iniciar Sesión (Mockup)
+            </button>
+            <button 
+              onClick={() => setIsAuthenticated(true)}
+              className="w-full bg-white/5 hover:bg-white/10 text-white/80 font-medium py-3.5 rounded-lg transition-all mt-3 border border-white/5"
+            >
+              Crear Cuenta (Mockup)
+            </button>
+          </motion.div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     // Note: The main container is now a light background

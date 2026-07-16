@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import { Link } from "react-router";
 
 const navLinks = [
-  { label: "Programas", href: "#programas" },
-  { label: "Contenidos", href: "#contenidos" },
-  { label: "Pilares", href: "#ruta" },
-  { label: "Materiales", href: "/portal" },
+  { label: "Programas", href: "/#programas" },
+  { label: "Contenidos", href: "/#contenidos" },
+  { label: "Pilares", href: "/#ruta" },
+  { label: "Espacio Techne", href: "/portal" },
 ];
 
 export default function Navbar() {
@@ -51,12 +52,12 @@ export default function Navbar() {
           </div>
 
           {/* Desktop CTA */}
-          <a
-            href="#formulario"
+          <Link
+            to="/aplicar"
             className="hidden md:inline-flex font-sans text-sm font-semibold text-white bg-[#2B6AFF] hover:bg-[#1A5AF5] hover:-translate-y-px hover:shadow-[0_4px_20px_rgba(43,106,255,0.3)] active:translate-y-0 px-6 py-2.5 rounded-full transition-all duration-200"
           >
             Aplicar al programa
-          </a>
+          </Link>
 
           {/* Mobile Menu Button */}
           <button
@@ -100,16 +101,13 @@ export default function Navbar() {
                   {link.label}
                 </motion.a>
               ))}
-              <motion.a
-                href="#formulario"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4, duration: 0.3 }}
+              <Link
+                to="/aplicar"
                 onClick={() => setMobileOpen(false)}
                 className="mt-4 font-sans text-base font-semibold text-white bg-[#2B6AFF] px-8 py-3 rounded-full"
               >
                 Aplicar al programa
-              </motion.a>
+              </Link>
             </div>
           </motion.div>
         )}
