@@ -77,16 +77,13 @@ export const aiFacts = [
   "Durante muchos años se creyó que solo las grandes empresas podrían desarrollar modelos de lenguaje avanzados; hoy existen decenas de alternativas abiertas entrenadas por organizaciones de todo el mundo.",
   "Un modelo open weights no siempre es completamente open source. En muchos casos se publican los pesos del modelo, pero no el conjunto de datos utilizado para entrenarlo.",
   "Hugging Face se ha convertido en el mayor repositorio mundial de modelos de inteligencia artificial, con millones de descargas diarias.",
-  "Miles de investigadores publican gratuitamente sus modelos en Hugging Face para que cualquier persona pueda probarlos o mejorarlos.",
   "Muchas universidades distribuyen modelos abiertos para acelerar la investigación científica sin depender exclusivamente de empresas privadas.",
   "DeepSeek nació como un laboratorio chino enfocado en desarrollar modelos de lenguaje de alto rendimiento con costos de entrenamiento significativamente menores.",
   "Uno de los objetivos de DeepSeek ha sido demostrar que es posible competir con modelos líderes utilizando una infraestructura más eficiente.",
   "DeepSeek desarrolló modelos especializados tanto para lenguaje natural como para generación y comprensión de código.",
   "La aparición de DeepSeek incrementó la competencia internacional en el desarrollo de modelos fundacionales.",
-  "Sus investigaciones han impulsado nuevas conversaciones sobre eficiencia computacional y reducción del costo de entrenamiento de grandes modelos.",
   "Mistral AI fue fundada en Francia y rápidamente se convirtió en una de las empresas europeas más importantes dentro del sector de la inteligencia artificial.",
   "Mistral ha apostado fuertemente por publicar modelos abiertos y de alto rendimiento.",
-  "Sus modelos destacan por ofrecer una excelente relación entre tamaño, velocidad y calidad de respuesta.",
   "Varias empresas utilizan modelos de Mistral como alternativa a soluciones comerciales cerradas.",
   "Europa considera a Mistral una pieza estratégica para fortalecer su independencia tecnológica en inteligencia artificial.",
   "NVIDIA fue fundada en 1993 con el objetivo principal de desarrollar tarjetas gráficas para videojuegos.",
@@ -126,7 +123,6 @@ export const aiFacts = [
   "Gracias a la cuantización, modelos que originalmente requerían servidores especializados pueden ejecutarse en computadoras personales e incluso en algunos teléfonos inteligentes.",
   "Los modelos Mixture of Experts (MoE) no utilizan todos sus parámetros para responder una pregunta; activan únicamente una pequeña parte del modelo en cada inferencia.",
   "Un sistema MoE funciona como un equipo de especialistas: un componente llamado router decide cuáles \"expertos\" son los más adecuados para procesar cada solicitud.",
-  "Gracias a esta arquitectura, un modelo puede tener cientos de miles de millones de parámetros sin utilizar todos simultáneamente.",
   "La arquitectura MoE permite aumentar significativamente la capacidad del modelo sin incrementar proporcionalmente el costo de inferencia.",
   "Varios de los modelos más avanzados desarrollados en los últimos años utilizan variantes de Mixture of Experts para mejorar su eficiencia.",
   "Un modelo de lenguaje no necesita conocer toda la información del mundo si puede buscarla antes de responder. Ese principio dio origen a RAG (Retrieval-Augmented Generation).",
@@ -198,5 +194,6 @@ export const aiFacts = [
   "Equipos de desarrollo emplean IA para detectar errores potenciales antes de que el software llegue a producción.",
   "Algunas organizaciones ya utilizan agentes especializados para revisar código de forma automática antes de que sea aprobado por un desarrollador humano.",
   "La IA también ayuda a traducir proyectos completos entre distintos lenguajes de programación, reduciendo significativamente el tiempo de migración.",
-  "La tendencia actual en ingeniería de software no es reemplazar al desarrollador, sino convertirlo en un orquestador de agentes, donde varias inteligencias artificiales colaboran para acelerar el desarrollo mientras el humano supervisa las decisiones críticas."
+  "La tendencia actual en ingeniería de software no es reemplazar al desarrollador, sino convertirlo en un orquestador de agentes, donde varias inteligencias artificiales colaboran para acelerar el desarrollo mientras el humano supervisa las decisiones críticas.",
+  "Miles de investigadores publican gratuitamente sus modelos en Hugging Face para que cualquier persona pueda probarlos o mejorarlos."
 ];

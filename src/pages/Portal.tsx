@@ -4,6 +4,39 @@ import { Download, FileText, Newspaper, ChevronRight, Shuffle, Search, Building2
 import { Link } from "react-router";
 import { glosario } from "../data/glosario";
 import { aiFacts } from "../data/randomFacts";
+import { directorio } from "../data/directorio";
+
+const DirectoryCard = ({ item }: { item: any }) => {
+  const [imgError, setImgError] = useState(false);
+  return (
+    <div className="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow flex flex-col h-full">
+      <div className="flex items-center gap-4 mb-4">
+        <div className="w-12 h-12 bg-gray-50 rounded-xl flex items-center justify-center overflow-hidden border border-gray-100 flex-shrink-0">
+          {!imgError ? (
+            <img 
+              src={item.logo} 
+              alt={item.name} 
+              onError={() => setImgError(true)}
+              className="w-8 h-8 object-contain"
+            />
+          ) : (
+            <Building2 className="text-gray-400" size={20} />
+          )}
+        </div>
+        <div className="flex-1 min-w-0">
+          <span className="inline-block text-[10px] font-mono font-semibold text-[#2B6AFF] tracking-wider uppercase bg-[#2B6AFF]/10 px-2 py-1 rounded-md mb-1 truncate max-w-full" title={item.category}>
+            {item.category}
+          </span>
+          <h3 className="font-semibold text-gray-900 text-lg leading-tight truncate">{item.name}</h3>
+        </div>
+      </div>
+      <p className="text-sm text-gray-500 mb-5 flex-grow">{item.description}</p>
+      <a href={item.url} target="_blank" rel="noopener noreferrer" className="text-[#2B6AFF] text-sm font-semibold hover:underline inline-flex items-center gap-1 mt-auto w-fit">
+        Visitar sitio web <ChevronRight size={14} />
+      </a>
+    </div>
+  );
+};
 
 // --- DUMMY DATA ---
 
@@ -243,19 +276,11 @@ export default function Portal() {
             {activeTab === "directorio" && (
               <div>
                 <h2 className="font-serif text-2xl mb-2 text-gray-900">Directorio de IA</h2>
-                <p className="text-gray-500 text-sm mb-6">Empresas, herramientas y personas clave en el ecosistema.</p>
+                <p className="text-gray-500 text-sm mb-8">Una colección curada de herramientas, aplicaciones y empresas de inteligencia artificial para potenciar tu productividad.</p>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {/* Placeholder Directory Item */}
-                  <div className="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm">
-                    <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center mb-4">
-                      <Building2 className="text-gray-400" size={24} />
-                    </div>
-                    <h3 className="font-semibold text-gray-900 mb-2">Empresa Ejemplo</h3>
-                    <p className="text-sm text-gray-500 mb-4 line-clamp-3">
-                      Una breve descripción de lo que hace esta herramienta o empresa y cómo puede ayudar a integrar inteligencia artificial en tus procesos.
-                    </p>
-                    <a href="#" className="text-[#2B6AFF] text-sm font-medium hover:underline">Visitar sitio web &rarr;</a>
-                  </div>
+                  {directorio.map((item, index) => (
+                    <DirectoryCard key={index} item={item} />
+                  ))}
                 </div>
               </div>
             )}
