@@ -3,14 +3,9 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Download, FileText, Newspaper, ChevronRight, Shuffle, Search, Building2, BookA, Crown, Lock } from "lucide-react";
 import { Link } from "react-router";
 import { glosario } from "../data/glosario";
+import { aiFacts } from "../data/randomFacts";
+
 // --- DUMMY DATA ---
-const aiFacts = [
-  "En 1956, John McCarthy acuñó el término 'Inteligencia Artificial' en la Conferencia de Dartmouth.",
-  "El primer chatbot de la historia fue ELIZA, creado en 1966 por Joseph Weizenbaum.",
-  "Los modelos fundacionales modernos pueden tener más de un billón (trillion) de parámetros.",
-  "Se estima que la IA podría aportar hasta $15.7 billones a la economía global para 2030.",
-  "GPT-4 aprobó el examen del colegio de abogados (Bar Exam) en el percentil 90."
-];
 
 const materials = [
   { id: 1, title: "Guía de Implementación IA 2026", type: "PDF", size: "2.4 MB" },
