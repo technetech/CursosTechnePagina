@@ -37,7 +37,7 @@ for (let i = 0; i < lines.length; i++) {
           name,
           description,
           url,
-          logo: `https://logo.clearbit.com/${domain}`
+          logo: `https://www.google.com/s2/favicons?domain=${domain}&sz=128`
         });
       }
     }
