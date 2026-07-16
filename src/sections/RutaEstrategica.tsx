@@ -4,19 +4,19 @@ const modules = [
   {
     num: "PILAR 01",
     title: "Fundamentos",
-    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    desc: "Domina los conceptos esenciales que todo profesional de tecnología necesita para crear soluciones con confianza.",
     image: "/images/module-1.jpg",
   },
   {
     num: "PILAR 02",
     title: "Práctica",
-    desc: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    desc: "Convierte el conocimiento en experiencia mediante proyectos, laboratorios y casos de uso del mundo real.",
     image: "/images/module-2.jpg",
   },
   {
     num: "PILAR 03",
     title: "Educación Continua",
-    desc: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.",
+    desc: "La tecnología nunca se detiene. Accede a contenido actualizado para crecer junto con la industria.",
     image: "/images/module-3.jpg",
   },
 ];
