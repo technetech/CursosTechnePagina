@@ -7,7 +7,6 @@ const navLinks = [
   { label: "Ruta", href: "#ruta" },
   { label: "Próximas fechas", href: "#fechas" },
   { label: "Testimonios", href: "#testimonios" },
-  { label: "Aliados", href: "#aliados" },
 ];
 
 export default function Navbar() {

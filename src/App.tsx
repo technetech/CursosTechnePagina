@@ -6,7 +6,6 @@ import Resultados from "./sections/Resultados";
 import RutaEstrategica from "./sections/RutaEstrategica";
 import Testimonios from "./sections/Testimonios";
 import CTABanner from "./sections/CTABanner";
-import Aliados from "./sections/Aliados";
 import Formulario from "./sections/Formulario";
 import Footer from "./sections/Footer";
 
@@ -21,7 +20,6 @@ function App() {
       <RutaEstrategica />
       <Testimonios />
       <CTABanner />
-      <Aliados />
       <Formulario />
       <Footer />
     </div>
