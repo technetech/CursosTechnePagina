@@ -20,9 +20,9 @@ const outcomes = [
 ];
 
 const stats = [
-  { label: "98% completion" },
-  { label: "1,100+ líderes" },
-  { label: "12 países" },
+  { label: "Técnica" },
+  { label: "Práctica" },
+  { label: "Táctica" },
 ];
 
 export default function Resultados() {
