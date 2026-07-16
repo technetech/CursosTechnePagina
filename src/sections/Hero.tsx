@@ -1,15 +1,8 @@
 import { motion } from "framer-motion";
 
-const stats = [
-  { value: "12h", label: "ENTRENAMIENTO" },
-  { value: "2 días", label: "PRESENCIAL" },
-  { value: "1 cena", label: "NETWORKING" },
-  { value: "40", label: "CUPOS MÁXIMO" },
-];
-
 export default function Hero() {
-  const titleWords = ["Techne", "AI", "Executive", "Program"];
-  const subtitleWords = ["para", "Directivos"];
+  const titleWords = ["Programas", "de", "Inteligencia", "Artificial"];
+  const subtitleWords = ["para", "Empresas"];
 
   return (
     <section className="relative min-h-[100dvh] flex items-center overflow-hidden">
@@ -87,9 +80,9 @@ export default function Hero() {
           transition={{ delay: 0.7, duration: 0.6 }}
           className="font-sans text-base md:text-[17px] text-white/70 max-w-[520px] leading-relaxed mb-8"
         >
-          Entrenamiento intensivo de 2 días para C-levels y directores. Deja de
+          Domina la Inteligencia Artificial con nuestros programas diseñados para equipos y directivos. Deja de
           ver la IA como tendencia y empieza a usarla como ventaja competitiva
-          operativa, real y medible.
+          operativa, real y medible en tu empresa.
         </motion.p>
 
         {/* CTA */}
@@ -106,35 +99,6 @@ export default function Hero() {
           </a>
         </motion.div>
 
-        {/* Stats */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1, duration: 0.5 }}
-          className="flex flex-wrap gap-x-6 md:gap-x-10 gap-y-4 mt-10"
-        >
-          {stats.map((stat, i) => (
-            <motion.div
-              key={stat.label}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1 + i * 0.1, duration: 0.5 }}
-              className="flex items-center gap-x-4 md:gap-x-6"
-            >
-              {i > 0 && (
-                <div className="hidden sm:block w-px h-8 bg-white/15 mr-2" />
-              )}
-              <div>
-                <p className="font-serif text-[28px] md:text-[32px] text-white leading-none">
-                  {stat.value}
-                </p>
-                <p className="font-mono text-[10px] font-medium text-white/40 tracking-[0.1em] mt-1">
-                  {stat.label}
-                </p>
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
       </div>
     </section>
   );
