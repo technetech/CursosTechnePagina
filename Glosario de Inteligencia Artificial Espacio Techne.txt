@@ -1,0 +1,407 @@
+﻿Glosario de Inteligencia Artificial
+Más de 300 términos fundamentales sobre IA, machine learning, deep learning y campos relacionados, organizados alfabéticamente. Incluye también empresas, productos/aplicaciones, investigadores clave y conceptos técnicos avanzados.
+________________
+
+
+A
+Agente (Agent): Sistema de IA capaz de percibir su entorno, tomar decisiones y ejecutar acciones de forma autónoma para alcanzar objetivos.
+Aprendizaje automático (Machine Learning): Rama de la IA que permite a los sistemas aprender patrones a partir de datos sin ser programados explícitamente para cada tarea.
+Aprendizaje por refuerzo (Reinforcement Learning, RL): Paradigma de aprendizaje donde un agente aprende a tomar decisiones mediante prueba y error, recibiendo recompensas o penalizaciones.
+Aprendizaje por refuerzo con retroalimentación humana (RLHF): Técnica que usa evaluaciones humanas para ajustar el comportamiento de un modelo, común en el entrenamiento de LLMs.
+Aprendizaje profundo (Deep Learning): Subcampo del machine learning basado en redes neuronales con múltiples capas.
+Aprendizaje semi-supervisado: Enfoque que combina datos etiquetados y no etiquetados durante el entrenamiento.
+Aprendizaje no supervisado: Tipo de aprendizaje donde el modelo encuentra patrones en datos sin etiquetas.
+Aprendizaje supervisado: Tipo de aprendizaje donde el modelo se entrena con datos etiquetados (entrada-salida conocida).
+Aprendizaje federado (Federated Learning): Técnica de entrenamiento distribuido donde los datos permanecen en dispositivos locales y solo se comparten actualizaciones del modelo.
+Aprendizaje por transferencia (Transfer Learning): Técnica que reutiliza un modelo entrenado en una tarea para acelerar el aprendizaje en otra tarea relacionada.
+Arquitectura de red: Estructura y organización de las capas y conexiones de una red neuronal.
+Atención (Attention): Mecanismo que permite a un modelo enfocarse en las partes más relevantes de la entrada al procesar información.
+Autoencoder: Red neuronal entrenada para reconstruir su propia entrada, útil para reducción de dimensionalidad y detección de anomalías.
+Autoregresivo (modelo): Modelo que genera datos secuencialmente, prediciendo cada elemento en base a los anteriores.
+________________
+
+
+B
+Backpropagation (retropropagación): Algoritmo para calcular gradientes y ajustar los pesos de una red neuronal durante el entrenamiento.
+Bag of Words: Representación de texto que cuenta la frecuencia de palabras ignorando el orden.
+Batch (lote): Conjunto de ejemplos de datos procesados juntos en una iteración de entrenamiento.
+Batch normalization: Técnica que normaliza las activaciones entre capas para estabilizar y acelerar el entrenamiento.
+BERT: Modelo de lenguaje basado en transformers, entrenado de forma bidireccional, usado para tareas de comprensión del lenguaje.
+Bias (sesgo): 1) Parámetro adicional en una neurona. 2) Tendencia sistemática de un modelo a favorecer ciertos resultados, a menudo reflejando sesgos en los datos de entrenamiento.
+Bias-variance tradeoff: Equilibrio entre la simplicidad de un modelo (sesgo) y su sensibilidad a los datos de entrenamiento (varianza).
+Big Data: Conjuntos de datos de gran volumen, velocidad y variedad que requieren herramientas especiales para su procesamiento.
+________________
+
+
+C
+Capa convolucional (Convolutional Layer): Capa de una red neuronal que aplica filtros para detectar patrones espaciales, común en visión por computadora.
+Capa oculta (Hidden Layer): Capa intermedia de una red neuronal entre la entrada y la salida.
+Chatbot: Programa diseñado para simular conversación con usuarios humanos.
+Chain of Thought (cadena de pensamiento): Técnica de prompting que induce a un modelo a razonar paso a paso antes de dar una respuesta final.
+Clasificación (Classification): Tarea de machine learning que asigna una categoría discreta a una entrada.
+Clustering (agrupamiento): Técnica de aprendizaje no supervisado que agrupa datos similares.
+CNN (Convolutional Neural Network): Red neuronal convolucional, especializada en procesar datos con estructura de cuadrícula, como imágenes.
+Codificador (Encoder): Parte de una arquitectura que transforma la entrada en una representación interna (embedding).
+Codificador-Decodificador (Encoder-Decoder): Arquitectura donde un codificador procesa la entrada y un decodificador genera la salida, común en traducción automática.
+Corpus: Conjunto extenso de textos usado para entrenar o evaluar modelos de lenguaje.
+Cuantización (Quantization): Técnica que reduce la precisión numérica de los pesos de un modelo para disminuir su tamaño y acelerar la inferencia.
+Curva de aprendizaje: Gráfico que muestra el rendimiento de un modelo en función del tiempo de entrenamiento o cantidad de datos.
+________________
+
+
+D
+Data augmentation (aumento de datos): Técnica para generar variaciones artificiales de los datos de entrenamiento y mejorar la generalización.
+Dataset (conjunto de datos): Colección estructurada de datos usada para entrenar o evaluar modelos.
+Decodificador (Decoder): Componente que genera una salida a partir de una representación interna.
+Deep fake: Contenido audiovisual sintético generado con IA que suplanta la apariencia o voz de una persona real.
+Destilación de conocimiento (Knowledge Distillation): Técnica donde un modelo pequeño ("estudiante") aprende a imitar el comportamiento de un modelo grande ("maestro").
+Difusión (Diffusion Model): Familia de modelos generativos que crean datos (como imágenes) revirtiendo gradualmente un proceso de adición de ruido.
+Dropout: Técnica de regularización que desactiva neuronas aleatoriamente durante el entrenamiento para evitar el sobreajuste.
+________________
+
+
+E
+Embedding: Representación vectorial de datos (palabras, imágenes, etc.) en un espacio de menor dimensión que captura relaciones semánticas.
+Entrenamiento (Training): Proceso de ajustar los parámetros de un modelo usando datos.
+Epoch (época): Una pasada completa por todo el conjunto de datos de entrenamiento.
+Ética en IA (AI Ethics): Campo que estudia las implicaciones morales y sociales del desarrollo y uso de la inteligencia artificial.
+Explicabilidad (Explainability / XAI): Capacidad de un sistema de IA de justificar sus decisiones de forma comprensible para humanos.
+Extracción de características (Feature Extraction): Proceso de identificar y seleccionar variables relevantes de los datos crudos.
+________________
+
+
+F
+F1-score: Métrica que combina precisión y exhaustividad (recall) en un solo valor, útil para clasificación desbalanceada.
+Fine-tuning (ajuste fino): Proceso de reentrenar un modelo preentrenado en un conjunto de datos más específico.
+Función de activación (Activation Function): Función matemática que introduce no linealidad en una red neuronal (ej. ReLU, sigmoide, tanh).
+Función de pérdida (Loss Function): Función que mide la diferencia entre las predicciones del modelo y los valores reales, usada para guiar el entrenamiento.
+Frontera de decisión (Decision Boundary): Límite que separa las diferentes clases en un espacio de características.
+________________
+
+
+G
+GAN (Generative Adversarial Network): Arquitectura compuesta por un generador y un discriminador que compiten entre sí para producir datos sintéticos realistas.
+Generalización: Capacidad de un modelo de rendir bien con datos que no vio durante el entrenamiento.
+GPT (Generative Pre-trained Transformer): Familia de modelos de lenguaje basados en la arquitectura transformer, entrenados de forma autoregresiva.
+GPU (Graphics Processing Unit): Procesador especializado en cálculos paralelos, ampliamente usado para entrenar modelos de deep learning.
+Gradiente (Gradient): Vector que indica la dirección de mayor incremento de una función, usado para optimizar modelos.
+Gradiente descendente (Gradient Descent): Algoritmo de optimización que ajusta los parámetros de un modelo en la dirección opuesta al gradiente para minimizar la función de pérdida.
+Gradiente que se desvanece (Vanishing Gradient): Problema donde los gradientes se vuelven muy pequeños en redes profundas, dificultando el entrenamiento.
+________________
+
+
+H
+Hallucination (alucinación): Fenómeno donde un modelo genera información falsa o inventada con apariencia de certeza.
+Hiperparámetro (Hyperparameter): Parámetro configurado antes del entrenamiento (como la tasa de aprendizaje) que no se aprende de los datos.
+Hipótesis (Hypothesis): Función candidata que un algoritmo de aprendizaje intenta ajustar a los datos.
+________________
+
+
+I
+IA débil (Narrow AI): Sistema de IA diseñado para realizar una tarea específica, sin capacidades generales.
+IA fuerte / General (AGI): Hipotética IA con capacidades cognitivas equivalentes o superiores a las humanas en cualquier dominio.
+IA generativa (Generative AI): Sistemas de IA capaces de crear contenido nuevo (texto, imagen, audio, video) similar al de los datos con los que fueron entrenados.
+Inferencia (Inference): Proceso de usar un modelo ya entrenado para hacer predicciones sobre nuevos datos.
+Ingeniería de prompts (Prompt Engineering): Práctica de diseñar instrucciones efectivas para obtener mejores resultados de un modelo generativo.
+Inteligencia artificial (IA): Campo de la informática dedicado a crear sistemas capaces de realizar tareas que normalmente requieren inteligencia humana.
+Interpretabilidad: Grado en que un humano puede entender la causa de una decisión tomada por un modelo.
+________________
+
+
+J
+Jerarquía de características (Feature Hierarchy): Organización de representaciones desde patrones simples hasta conceptos complejos, típica de redes profundas.
+Jupyter Notebook: Entorno interactivo ampliamente usado para desarrollar y documentar código de machine learning.
+________________
+
+
+K
+K-means: Algoritmo de clustering que agrupa datos en K grupos según su cercanía a centroides.
+K-nearest neighbors (KNN): Algoritmo que clasifica un dato según la clase mayoritaria de sus K vecinos más cercanos.
+Kernel: Función usada en algoritmos como SVM para transformar datos a un espacio de mayor dimensión; también se refiere al filtro en una capa convolucional.
+________________
+
+
+L
+LangChain: Framework de desarrollo para construir aplicaciones que integran modelos de lenguaje con otras herramientas y fuentes de datos.
+LLM (Large Language Model): Modelo de lenguaje de gran escala entrenado con enormes cantidades de texto, capaz de generar y comprender lenguaje natural.
+Long Short-Term Memory (LSTM): Tipo de red neuronal recurrente diseñada para capturar dependencias a largo plazo en secuencias.
+________________
+
+
+M
+Machine Learning Ops (MLOps): Conjunto de prácticas para gestionar el ciclo de vida de modelos de machine learning en producción.
+Matriz de confusión (Confusion Matrix): Tabla que resume el rendimiento de un modelo de clasificación mostrando aciertos y errores por clase.
+Modelo base (Foundation Model): Modelo de gran escala entrenado con datos masivos que sirve como base para adaptarse a múltiples tareas.
+Modelo multimodal: Modelo capaz de procesar y combinar diferentes tipos de datos (texto, imagen, audio) simultáneamente.
+Modelo preentrenado (Pretrained Model): Modelo ya entrenado en un gran conjunto de datos, listo para ser reutilizado o ajustado.
+________________
+
+
+N
+NLP (Natural Language Processing / Procesamiento de Lenguaje Natural): Campo de la IA enfocado en la interacción entre computadoras y lenguaje humano.
+Normalización (Normalization): Técnica de preprocesamiento que escala los datos a un rango estándar.
+N-gram: Secuencia contigua de N elementos (palabras o caracteres) usada en modelado de lenguaje.
+________________
+
+
+O
+Overfitting (sobreajuste): Fenómeno donde un modelo aprende demasiado bien los datos de entrenamiento, perdiendo capacidad de generalización.
+Optimizador (Optimizer): Algoritmo que ajusta los parámetros del modelo para minimizar la función de pérdida (ej. Adam, SGD).
+One-hot encoding: Técnica de representación donde cada categoría se codifica como un vector binario con un solo valor activo.
+________________
+
+
+P
+Parámetros (Parameters): Valores internos de un modelo (pesos y sesgos) que se ajustan durante el entrenamiento.
+Perceptrón: Modelo más simple de neurona artificial, base histórica de las redes neuronales.
+Perplejidad (Perplexity): Métrica que mide qué tan bien un modelo de lenguaje predice una muestra de texto.
+Precisión (Precision): Métrica que mide la proporción de predicciones positivas que fueron correctas.
+Preprocesamiento de datos (Data Preprocessing): Conjunto de técnicas para limpiar y transformar datos antes de entrenar un modelo.
+Prompt: Instrucción o entrada de texto proporcionada a un modelo generativo para obtener una respuesta.
+Prompt injection: Técnica de manipulación que busca alterar el comportamiento de un modelo mediante instrucciones ocultas o maliciosas en la entrada.
+________________
+
+
+R
+Razonamiento (Reasoning): Capacidad de un modelo de IA de realizar inferencias lógicas o resolver problemas de varios pasos.
+Recall (exhaustividad): Métrica que mide la proporción de casos positivos reales detectados correctamente por el modelo.
+Red neuronal (Neural Network): Modelo computacional inspirado en el cerebro, compuesto de nodos (neuronas) organizados en capas.
+Red neuronal recurrente (RNN): Arquitectura diseñada para procesar datos secuenciales, manteniendo un estado interno entre pasos.
+Regresión: Tarea de machine learning que predice un valor numérico continuo.
+Regularización: Conjunto de técnicas para prevenir el sobreajuste penalizando la complejidad del modelo.
+Reinforcement Learning from Human Feedback: Ver RLHF.
+Representación latente (Latent Representation): Codificación interna y comprimida de los datos que captura sus características esenciales.
+Retrieval-Augmented Generation (RAG): Técnica que combina la recuperación de información externa con la generación de texto para mejorar la precisión de las respuestas.
+________________
+
+
+S
+Sesgo algorítmico (Algorithmic Bias): Discriminación sistemática producida por un modelo debido a sesgos presentes en los datos o el diseño del algoritmo.
+Sistema experto (Expert System): Sistema de IA basado en reglas que emula la toma de decisiones de un experto humano en un dominio específico.
+Softmax: Función que convierte un vector de valores en una distribución de probabilidad.
+Self-attention (autoatención): Mecanismo que permite a un modelo relacionar diferentes posiciones de una misma secuencia para calcular una representación.
+Stable Diffusion: Modelo de difusión de código abierto para generación de imágenes a partir de texto.
+Sobreajuste: Ver Overfitting.
+Subajuste (Underfitting): Fenómeno donde un modelo es demasiado simple para capturar los patrones de los datos.
+________________
+
+
+T
+Tasa de aprendizaje (Learning Rate): Hiperparámetro que controla el tamaño de los pasos de ajuste durante el entrenamiento.
+Tensor: Estructura de datos multidimensional usada para representar datos en frameworks de deep learning.
+TensorFlow: Framework de código abierto para desarrollo de modelos de machine learning, creado por Google.
+Test set (conjunto de prueba): Subconjunto de datos usado para evaluar el rendimiento final de un modelo.
+Token: Unidad mínima de texto (palabra, subpalabra o carácter) que un modelo de lenguaje procesa.
+Tokenización (Tokenization): Proceso de dividir un texto en tokens para su procesamiento.
+Transfer Learning: Ver Aprendizaje por transferencia.
+Transformer: Arquitectura de red neuronal basada en mecanismos de atención, base de la mayoría de los LLMs actuales.
+Training set (conjunto de entrenamiento): Subconjunto de datos usado para ajustar los parámetros de un modelo.
+________________
+
+
+V
+Validación cruzada (Cross-validation): Técnica de evaluación que divide los datos en múltiples particiones para medir la robustez de un modelo.
+Validation set (conjunto de validación): Subconjunto de datos usado para ajustar hiperparámetros y evitar el sobreajuste durante el entrenamiento.
+Variational Autoencoder (VAE): Tipo de autoencoder que aprende una distribución probabilística en el espacio latente, usado para generación de datos.
+Vector de características (Feature Vector): Representación numérica de las propiedades relevantes de un dato.
+Vision Transformer (ViT): Adaptación de la arquitectura transformer para tareas de visión por computadora.
+Visión por computadora (Computer Vision): Campo de la IA dedicado a que las máquinas interpreten y comprendan imágenes y video.
+________________
+
+
+W
+Weight decay: Técnica de regularización que penaliza pesos grandes en un modelo para reducir el sobreajuste.
+Word embedding: Representación vectorial de palabras que captura relaciones semánticas (ej. Word2Vec, GloVe).
+________________
+
+
+Z
+Zero-shot learning: Capacidad de un modelo de realizar una tarea sin haber recibido ejemplos específicos de entrenamiento para ella.
+________________
+
+
+Términos adicionales
+Agente autónomo: Sistema de IA que puede planificar y ejecutar secuencias de acciones sin supervisión constante.
+AlphaGo / AlphaFold: Sistemas de IA de DeepMind destacados por resolver problemas complejos (juego de Go y predicción de estructura de proteínas, respectivamente).
+API (Application Programming Interface): Interfaz que permite a los desarrolladores interactuar con un modelo o servicio de IA mediante código.
+Benchmark: Conjunto estandarizado de pruebas usado para comparar el rendimiento de distintos modelos.
+Caja negra (Black box): Descripción de modelos cuyo funcionamiento interno es difícil de interpretar.
+Capacidad emergente (Emergent Capability): Habilidad que surge en un modelo a gran escala sin haber sido explícitamente entrenada para ella.
+Context window (ventana de contexto): Cantidad máxima de texto (en tokens) que un modelo puede procesar en una sola interacción.
+Contrastive Learning: Técnica de aprendizaje que entrena modelos comparando pares de ejemplos similares y diferentes.
+Data leakage (fuga de datos): Error donde información del conjunto de prueba se filtra al entrenamiento, distorsionando la evaluación.
+Datos sintéticos (Synthetic Data): Datos generados artificialmente, usados para complementar o sustituir datos reales en el entrenamiento.
+Detección de anomalías (Anomaly Detection): Tarea de identificar patrones inusuales que se desvían del comportamiento esperado.
+Diffusion Transformer (DiT): Arquitectura que combina modelos de difusión con transformers para generación de contenido.
+Edge AI: Ejecución de modelos de IA directamente en dispositivos locales en lugar de servidores en la nube.
+Ensemble learning (aprendizaje por conjuntos): Técnica que combina múltiples modelos para mejorar el rendimiento predictivo.
+Etiquetado de datos (Data Labeling): Proceso de asignar categorías o valores a los datos para su uso en aprendizaje supervisado.
+Function calling (llamada a funciones): Capacidad de un modelo de lenguaje de invocar herramientas o funciones externas de forma estructurada.
+Generalización fuera de distribución (Out-of-distribution generalization): Capacidad de un modelo de rendir bien ante datos distintos a los vistos en entrenamiento.
+Gobernanza de IA (AI Governance): Conjunto de políticas, normas y marcos legales para regular el desarrollo y uso de la IA.
+Grounding: Proceso de anclar las respuestas de un modelo generativo a fuentes de información verificables.
+Guardrails (barandillas de seguridad): Mecanismos técnicos que limitan las salidas de un modelo para evitar comportamientos no deseados.
+Image captioning: Tarea de generar automáticamente una descripción textual de una imagen.
+Inpainting: Técnica de generación de imágenes que rellena o reconstruye partes faltantes o seleccionadas de una imagen.
+Instruction tuning: Proceso de ajustar un modelo con ejemplos de instrucciones y respuestas para mejorar su capacidad de seguir órdenes.
+Latencia (Latency): Tiempo que tarda un modelo en producir una respuesta tras recibir una entrada.
+Machine translation (traducción automática): Tarea de traducir texto de un idioma a otro mediante IA.
+Mixture of Experts (MoE): Arquitectura donde distintas subredes ("expertos") se activan selectivamente según la entrada, mejorando eficiencia.
+Modelo de difusión latente (Latent Diffusion Model): Variante de modelo de difusión que opera en un espacio latente comprimido, más eficiente computacionalmente.
+Modelo de lenguaje (Language Model): Modelo estadístico que predice la probabilidad de secuencias de palabras.
+Multi-agente (Multi-agent system): Sistema compuesto por varios agentes de IA que interactúan o colaboran entre sí.
+Named Entity Recognition (NER): Tarea de NLP que identifica y clasifica entidades (nombres, lugares, fechas) en un texto.
+Neurona artificial: Unidad básica de cómputo en una red neuronal que aplica una función a sus entradas ponderadas.
+Object detection (detección de objetos): Tarea de visión por computadora que localiza e identifica objetos dentro de una imagen.
+Optical Character Recognition (OCR): Tecnología que convierte texto presente en imágenes en texto digital editable.
+Parámetros congelados (Frozen parameters): Parámetros de un modelo que no se actualizan durante un proceso de ajuste o entrenamiento.
+Pipeline de datos (Data Pipeline): Secuencia de procesos que transforman datos crudos en un formato listo para el modelo.
+Pooling: Operación en redes convolucionales que reduce la dimensionalidad de los mapas de características.
+Positional encoding (codificación posicional): Técnica usada en transformers para incorporar información sobre el orden de los elementos en una secuencia.
+Prompt engineering: Ver Ingeniería de prompts.
+Red neuronal profunda (Deep Neural Network, DNN): Red neuronal con múltiples capas ocultas.
+Reducción de dimensionalidad (Dimensionality Reduction): Técnicas (como PCA) para reducir el número de variables de un conjunto de datos conservando su información esencial.
+Refuerzo con IA (RLAIF): Variante de RLHF donde la retroalimentación proviene de otro modelo de IA en lugar de humanos.
+Robustez (Robustness): Capacidad de un modelo de mantener su rendimiento ante datos ruidosos, adversarios o inesperados.
+Sampling (muestreo): Proceso de seleccionar la siguiente salida de un modelo generativo según una distribución de probabilidad.
+Segmentación semántica (Semantic Segmentation): Tarea de visión por computadora que clasifica cada píxel de una imagen según su categoría.
+Sentiment analysis (análisis de sentimiento): Tarea de NLP que determina la actitud emocional expresada en un texto.
+Serving (model serving): Proceso de desplegar un modelo entrenado para que pueda recibir solicitudes y devolver predicciones en producción.
+Similaridad coseno (Cosine Similarity): Métrica que mide el ángulo entre dos vectores, usada frecuentemente para comparar embeddings.
+Sistema autónomo (Autonomous System): Sistema capaz de operar y tomar decisiones sin intervención humana continua.
+Speech-to-text (reconocimiento de voz): Tecnología que convierte audio hablado en texto escrito.
+Stochastic Gradient Descent (SGD): Variante del gradiente descendente que actualiza parámetros usando subconjuntos aleatorios de datos.
+Superalineación (Superalignment): Área de investigación enfocada en garantizar que sistemas de IA extremadamente capaces sigan las intenciones humanas.
+Synthetic data: Ver Datos sintéticos.
+Text-to-image: Modelos que generan imágenes a partir de descripciones textuales.
+Text-to-speech (síntesis de voz): Tecnología que convierte texto escrito en audio hablado.
+Top-k / Top-p sampling: Estrategias de muestreo que limitan las opciones consideradas por un modelo generativo al elegir el siguiente token.
+Vector database (base de datos vectorial): Base de datos optimizada para almacenar y buscar embeddings mediante similitud.
+Weights (pesos): Valores numéricos que determinan la fuerza de las conexiones entre neuronas en una red neuronal.
+Zero-day vulnerability en IA: Falla de seguridad no descubierta previamente que puede ser explotada en sistemas basados en IA.
+Alineación (AI Alignment): Campo de investigación centrado en asegurar que los objetivos de un sistema de IA coincidan con los valores e intenciones humanas.
+Ambient computing con IA: Integración de IA en el entorno cotidiano de forma discreta, anticipando necesidades del usuario.
+Anotación de datos: Ver Etiquetado de datos.
+Arquitectura Mixture of Experts: Ver Mixture of Experts.
+Autocompletado (Autocomplete): Función que predice y sugiere la continuación de un texto mientras se escribe.
+Benchmark de razonamiento: Conjunto de pruebas diseñadas específicamente para evaluar la capacidad de razonamiento lógico o matemático de un modelo.
+Caja de herramientas (Toolkit) de IA: Conjunto de bibliotecas y utilidades para desarrollar aplicaciones de IA (ej. Hugging Face, PyTorch).
+Catástrofe del olvido (Catastrophic Forgetting): Fenómeno donde un modelo pierde conocimiento previamente aprendido al ser entrenado en nuevas tareas.
+Chain-of-thought prompting: Ver Chain of Thought.
+Clustering jerárquico: Técnica de agrupamiento que construye una jerarquía de clústeres anidados.
+Compresión de modelos (Model Compression): Conjunto de técnicas (poda, cuantización, destilación) para reducir el tamaño de un modelo sin perder mucho rendimiento.
+Contexto (Context): Información previa que un modelo utiliza para generar una respuesta coherente.
+Curriculum learning: Estrategia de entrenamiento que presenta ejemplos en orden creciente de dificultad.
+Datos de entrenamiento (Training Data): Conjunto de datos usado para ajustar los parámetros de un modelo de IA.
+Deepfake: Ver Deep fake.
+Descenso de gradiente estocástico: Ver Stochastic Gradient Descent.
+Discriminador (Discriminator): Componente de una GAN que distingue entre datos reales y generados.
+Embedding space (espacio de embeddings): Espacio vectorial donde se representan los embeddings, en el cual la cercanía indica similitud semántica.
+Entropía cruzada (Cross-Entropy): Función de pérdida común usada en tareas de clasificación.
+Escalado de modelos (Model Scaling): Práctica de aumentar el tamaño de un modelo (parámetros, datos, cómputo) para mejorar su rendimiento.
+Filtro convolucional (Convolutional Filter): Matriz de pesos que se desliza sobre una imagen para extraer características.
+Generador (Generator): Componente de una GAN que crea datos sintéticos con el objetivo de engañar al discriminador.
+Gradient clipping: Técnica que limita la magnitud de los gradientes para evitar inestabilidad durante el entrenamiento.
+Human-in-the-loop: Enfoque que incorpora supervisión o retroalimentación humana en el proceso de entrenamiento o funcionamiento de un sistema de IA.
+Inferencia en tiempo real (Real-time Inference): Capacidad de un modelo de generar predicciones con baja latencia, apta para aplicaciones interactivas.
+Instrucción de sistema (System Prompt): Conjunto de instrucciones iniciales que definen el comportamiento general de un modelo conversacional.
+Modelo de recompensa (Reward Model): Modelo entrenado para predecir qué respuestas serían preferidas por humanos, usado en RLHF.
+Multi-head attention: Variante del mecanismo de atención que ejecuta varias "cabezas" de atención en paralelo para capturar distintos tipos de relaciones.
+Optimización bayesiana: Técnica para ajustar hiperparámetros de forma eficiente usando modelos probabilísticos.
+Poda de redes (Pruning): Técnica que elimina conexiones o neuronas poco relevantes para reducir el tamaño de un modelo.
+Red generativa adversarial: Ver GAN.
+Sesgo de confirmación en IA: Tendencia de un sistema a reforzar patrones ya presentes en los datos, incluso si son incorrectos o injustos.
+Singularidad tecnológica: Concepto hipotético sobre un punto futuro en que la IA superaría la inteligencia humana, generando cambios sociales impredecibles.
+Watermarking (marca de agua digital): Técnica para insertar señales identificables en contenido generado por IA, con el fin de detectar su origen sintético.
+________________
+
+
+Más términos técnicos (avanzados y recientes)
+Agentic AI (IA agéntica): Enfoque en el que un modelo actúa de forma autónoma, planificando y ejecutando múltiples pasos, usando herramientas, para completar tareas complejas sin supervisión constante.
+Alucinación fáctica vs. de razonamiento: Distinción entre errores donde un modelo inventa datos (hechos falsos) y errores donde falla en el proceso lógico de razonamiento.
+Apprenticeship learning: Variante del aprendizaje por refuerzo donde el agente aprende observando demostraciones de un experto.
+Arquitectura Mamba / State Space Models (SSM): Familia de arquitecturas alternativas a los transformers que procesan secuencias largas de forma más eficiente mediante espacios de estado.
+Auto-consistencia (Self-consistency): Técnica de prompting que genera múltiples cadenas de razonamiento y selecciona la respuesta más frecuente entre ellas.
+Caching de contexto (Context Caching / Prompt Caching): Técnica que reutiliza el procesamiento de partes fijas de un prompt para reducir costo y latencia en llamadas repetidas.
+Chinchilla (leyes de escalado óptimo): Estudio de DeepMind que estableció la relación óptima entre tamaño del modelo y cantidad de datos de entrenamiento para maximizar el rendimiento.
+Computer use (uso de computadora por IA): Capacidad de un modelo de IA de operar interfaces gráficas (mover el mouse, hacer clic, escribir) como lo haría un humano.
+Constitutional AI: Método de entrenamiento (desarrollado por Anthropic) donde un modelo se autoevalúa y corrige según un conjunto de principios escritos, reduciendo la dependencia de retroalimentación humana directa.
+Contaminación de datos (Data Contamination): Problema donde datos de evaluación aparecen accidentalmente en el conjunto de entrenamiento, inflando artificialmente el rendimiento medido.
+Cuello de botella de embeddings (Bottleneck): Capa de dimensión reducida en una red que fuerza al modelo a aprender una representación compacta de la información.
+Few-shot learning: Capacidad de un modelo de aprender una tarea a partir de solo unos pocos ejemplos proporcionados en el prompt.
+In-context learning (aprendizaje en contexto): Capacidad de un LLM de adaptar su comportamiento según ejemplos o instrucciones dados directamente en el prompt, sin actualizar sus parámetros.
+Interpretabilidad mecanicista (Mechanistic Interpretability): Campo de investigación que busca entender los circuitos internos y algoritmos específicos que un modelo aprende, a nivel de neuronas y capas.
+Jailbreak: Técnica que busca eludir las restricciones de seguridad de un modelo mediante prompts diseñados para manipular su comportamiento.
+LoRA (Low-Rank Adaptation): Técnica de fine-tuning eficiente que añade matrices de bajo rango a un modelo preentrenado, actualizando muchos menos parámetros que un ajuste completo.
+Ley de escalado (Scaling Laws): Relaciones empíricas que describen cómo mejora el rendimiento de un modelo al aumentar parámetros, datos y cómputo.
+Model card (ficha de modelo): Documento estandarizado que describe las capacidades, limitaciones, datos de entrenamiento y consideraciones éticas de un modelo publicado.
+Multi-agente colaborativo: Sistema donde varios agentes de IA especializados se coordinan entre sí para resolver tareas complejas dividiéndolas en subtareas.
+PEFT (Parameter-Efficient Fine-Tuning): Familia de técnicas (como LoRA o adapters) que ajustan un modelo grande modificando solo una fracción pequeña de sus parámetros.
+Red teaming (equipo rojo): Práctica de probar deliberadamente un sistema de IA con ataques o casos adversarios para identificar vulnerabilidades antes de su lanzamiento.
+ReAct (Reason + Act): Estrategia de prompting que alterna pasos de razonamiento explícito con acciones (como llamadas a herramientas) de forma iterativa.
+Sesgo de sicofancia (Sycophancy): Tendencia de un modelo a estar de acuerdo con el usuario o decirle lo que quiere oír en lugar de dar la respuesta más precisa u honesta.
+Sparse attention (atención dispersa): Variante del mecanismo de atención que solo considera un subconjunto de posiciones, reduciendo el costo computacional en secuencias largas.
+Tree of Thought (árbol de pensamiento): Técnica de razonamiento que explora múltiples caminos de solución en forma de árbol, evaluando y podando ramas antes de llegar a una respuesta.
+Uso de herramientas (Tool Use / Function Calling): Capacidad de un modelo de invocar APIs, calculadoras, buscadores u otras herramientas externas para complementar sus respuestas.
+________________
+
+
+Empresas y organizaciones clave
+Anthropic: Empresa de investigación en IA fundada en 2021, creadora de los modelos Claude, con fuerte enfoque en seguridad y alineación de IA.
+Cohere: Empresa canadiense especializada en modelos de lenguaje orientados a aplicaciones empresariales.
+DeepMind (Google DeepMind): Laboratorio de investigación en IA con sede en Londres, conocido por AlphaGo, AlphaFold y su fusión con el equipo Brain de Google.
+Hugging Face: Plataforma y comunidad de código abierto para compartir modelos, datasets y herramientas de machine learning.
+IBM Research: División de investigación de IBM, pionera histórica en IA (Deep Blue, Watson).
+Meta AI (FAIR): División de investigación en IA de Meta, responsable de modelos como LLaMA y herramientas de código abierto en visión y lenguaje.
+Microsoft AI: División de Microsoft que integra modelos de IA (incluyendo los de OpenAI) en productos como Copilot y Azure AI.
+Midjourney: Empresa independiente conocida por su modelo generativo de imágenes a partir de texto, usado principalmente vía Discord.
+Mistral AI: Empresa francesa que desarrolla modelos de lenguaje de código abierto y comercial, reconocida por su eficiencia.
+NVIDIA: Empresa de semiconductores cuyas GPUs son la infraestructura dominante para entrenar e inferir modelos de deep learning.
+OpenAI: Empresa de investigación en IA fundada en 2015, creadora de la familia de modelos GPT, ChatGPT, DALL-E y Sora.
+Perplexity AI: Empresa creadora de un motor de búsqueda conversacional basado en modelos de lenguaje con recuperación de información en tiempo real.
+Runway: Empresa enfocada en herramientas de IA generativa para video y edición creativa.
+Stability AI: Empresa detrás del modelo de código abierto Stable Diffusion para generación de imágenes.
+xAI: Empresa fundada por Elon Musk, creadora del modelo de lenguaje Grok, integrado en la plataforma X.
+________________
+
+
+Productos y aplicaciones
+Claude: Familia de modelos de lenguaje conversacionales desarrollados por Anthropic.
+Copilot (GitHub / Microsoft Copilot): Asistente de IA integrado en herramientas de programación (GitHub) y productividad (Microsoft 365).
+DALL-E: Modelo de OpenAI para generación de imágenes a partir de descripciones textuales.
+Gemini: Familia de modelos de lenguaje multimodales desarrollados por Google DeepMind.
+Grok: Modelo de lenguaje conversacional desarrollado por xAI, integrado en la red social X.
+LLaMA: Familia de modelos de lenguaje de código abierto desarrollados por Meta AI.
+Midjourney (app): Herramienta de generación de imágenes a partir de texto, popular en el ámbito creativo y de diseño.
+Sora: Modelo de OpenAI para generación de video a partir de descripciones de texto.
+Stable Diffusion (app): Modelo de código abierto para generación de imágenes, ampliamente adoptado y modificado por la comunidad.
+Whisper: Modelo de OpenAI para reconocimiento automático de voz (speech-to-text) multilingüe.
+________________
+
+
+Investigadores e IA (figuras clave)
+Andrej Karpathy: Investigador conocido por su trabajo en visión por computadora y por popularizar explicaciones accesibles sobre redes neuronales; exdirector de IA en Tesla y exempleado de OpenAI.
+Andrew Ng: Investigador y educador, cofundador de Coursera y Google Brain, figura influyente en la difusión educativa del machine learning.
+Dario Amodei: Cofundador y director ejecutivo de Anthropic, previamente vicepresidente de investigación en OpenAI.
+Daniela Amodei: Cofundadora y presidenta de Anthropic.
+Demis Hassabis: Cofundador y director ejecutivo de Google DeepMind, ganador del Premio Nobel de Química 2024 por su trabajo en AlphaFold.
+Fei-Fei Li: Investigadora conocida por crear ImageNet y por su trabajo en visión por computadora e IA centrada en el ser humano, profesora en Stanford.
+Geoffrey Hinton: Conocido como uno de los "padrinos del deep learning"; pionero del backpropagation y las redes neuronales profundas, ganador del Premio Nobel de Física 2024.
+Ilya Sutskever: Cofundador y exdirector científico de OpenAI, coautor de trabajos fundamentales como AlexNet; posteriormente fundador de Safe Superintelligence Inc.
+Sam Altman: Director ejecutivo de OpenAI, figura pública central en el desarrollo y difusión de modelos como ChatGPT.
+Yann LeCun: Pionero de las redes neuronales convolucionales, científico jefe de IA en Meta, ganador del Premio Turing 2018.
+Yoshua Bengio: Investigador pionero del deep learning, profesor en la Universidad de Montreal, ganador del Premio Turing 2018 y voz activa en la seguridad de la IA.
+________________
+
+
+Conceptos regulatorios y sociales
+AI Act (Ley de IA de la Unión Europea): Marco legal de la Unión Europea que regula el desarrollo y uso de sistemas de IA según su nivel de riesgo.
+Brecha de IA (AI Divide): Desigualdad en el acceso a tecnologías, infraestructura y beneficios de la IA entre países, empresas o personas.
+Carrera armamentista de IA (AI Arms Race): Competencia entre países o empresas por desarrollar sistemas de IA cada vez más avanzados, con implicaciones geopolíticas y de seguridad.
+Compute (cómputo) como recurso estratégico: Concepto que resalta el acceso a poder de procesamiento (GPUs, centros de datos) como un factor determinante en el desarrollo de IA avanzada.
+Desplazamiento laboral por IA: Fenómeno de sustitución o transformación de empleos humanos debido a la automatización mediante IA.
+Gran apagado / Pausa en IA (AI Pause): Propuestas y debates públicos sobre desacelerar deliberadamente el desarrollo de sistemas de IA de frontera por razones de seguridad.
+Modelo de frontera (Frontier Model): Denominación para los modelos de IA más avanzados y de mayor escala disponibles en un momento dado, con capacidades en la vanguardia del campo.
+Open source vs. modelos cerrados: Debate sobre si los modelos de IA deben publicarse con pesos y código abiertos o mantenerse propietarios por razones de seguridad, competitividad o control.
+Riesgo existencial de la IA (AI X-risk): Preocupación teórica sobre escenarios en los que sistemas de IA muy avanzados podrían representar una amenaza a gran escala para la humanidad.
+Soberanía de IA (AI Sovereignty): Capacidad de un país o región de desarrollar y controlar su propia infraestructura y modelos de IA sin depender de actores extranjeros.

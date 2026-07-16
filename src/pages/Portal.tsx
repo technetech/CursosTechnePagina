@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Download, FileText, Newspaper, ChevronRight, Shuffle, Search, Building2, BookA, Crown, Lock } from "lucide-react";
 import { Link } from "react-router";
-
+import { glosario } from "../data/glosario";
 // --- DUMMY DATA ---
 const aiFacts = [
   "En 1956, John McCarthy acuñó el término 'Inteligencia Artificial' en la Conferencia de Dartmouth.",
@@ -38,6 +38,16 @@ export default function Portal() {
   
   const [activeTab, setActiveTab] = useState("boletin");
   const [randomFact, setRandomFact] = useState("Haz clic en el botón para descubrir un dato sobre la Inteligencia Artificial.");
+  const [searchQuery, setSearchQuery] = useState("");
+  const [activeLetter, setActiveLetter] = useState("TODOS");
+
+  const letters = ["TODOS", ..."ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("")];
+
+  const filteredGlosario = glosario.filter(item => {
+    const matchesSearch = item.term.toLowerCase().includes(searchQuery.toLowerCase()) || item.definition.toLowerCase().includes(searchQuery.toLowerCase());
+    const matchesLetter = activeLetter === "TODOS" || item.term.toUpperCase().startsWith(activeLetter);
+    return matchesSearch && matchesLetter;
+  });
 
   // Fix scroll bug
   useEffect(() => {
@@ -261,23 +271,46 @@ export default function Portal() {
                 <h2 className="font-serif text-2xl mb-2 text-gray-900">Glosario Técnico</h2>
                 <p className="text-gray-500 text-sm mb-6">Busca y entiende los términos clave de la industria.</p>
                 
-                <div className="relative mb-8">
+                <div className="relative mb-6">
                   <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
                   <input 
                     type="text" 
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
                     placeholder="Buscar un término (ej. LLM, RAG, Prompting)..."
                     className="w-full bg-white border border-gray-300 rounded-lg pl-10 pr-4 py-3 text-gray-900 text-sm focus:border-[#2B6AFF] focus:ring-2 focus:ring-[#2B6AFF]/20 outline-none transition-all shadow-sm"
                   />
                 </div>
 
-                <div className="space-y-6">
-                  {/* Placeholder Glossary Item */}
-                  <div className="bg-white p-5 border border-gray-200 rounded-xl shadow-sm">
-                    <h3 className="font-semibold text-[#2B6AFF] mb-2 text-lg">LLM (Large Language Model)</h3>
-                    <p className="text-gray-600 text-sm leading-relaxed">
-                      Un modelo de lenguaje grande es un algoritmo de aprendizaje profundo que puede reconocer, resumir, traducir, predecir y generar contenido utilizando conjuntos de datos masivos.
-                    </p>
-                  </div>
+                <div className="flex flex-wrap gap-2 mb-8">
+                  {letters.map(letter => (
+                    <button
+                      key={letter}
+                      onClick={() => setActiveLetter(letter)}
+                      className={`px-3 py-1.5 rounded-md text-xs font-semibold transition-all ${
+                        activeLetter === letter 
+                          ? "bg-[#2B6AFF] text-white shadow-sm" 
+                          : "bg-white border border-gray-200 text-gray-600 hover:bg-gray-50 hover:border-gray-300"
+                      }`}
+                    >
+                      {letter}
+                    </button>
+                  ))}
+                </div>
+
+                <div className="space-y-4">
+                  {filteredGlosario.length > 0 ? (
+                    filteredGlosario.map((item, index) => (
+                      <div key={index} className="bg-white p-5 border border-gray-200 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+                        <h3 className="font-semibold text-[#2B6AFF] mb-2 text-lg">{item.term}</h3>
+                        <p className="text-gray-600 text-sm leading-relaxed">{item.definition}</p>
+                      </div>
+                    ))
+                  ) : (
+                    <div className="text-center py-10 text-gray-500">
+                      No se encontraron términos que coincidan con tu búsqueda.
+                    </div>
+                  )}
                 </div>
               </div>
             )}
