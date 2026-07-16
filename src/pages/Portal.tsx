@@ -9,12 +9,7 @@ import { useAuth } from "../context/AuthContext";
 import { auth, db } from "../firebase";
 import { signInWithPopup, GoogleAuthProvider, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
-import { motion, AnimatePresence } from "framer-motion";
-import { Download, FileText, Newspaper, ChevronRight, Shuffle, Search, Building2, BookA, Crown, Lock } from "lucide-react";
-import { Link } from "react-router";
-import { glosario } from "../data/glosario";
-import { aiFacts } from "../data/randomFacts";
-import { directorio } from "../data/directorio";
+
 
 const DirectoryCard = ({ item }: { item: any }) => {
   const [imgError, setImgError] = useState(false);
